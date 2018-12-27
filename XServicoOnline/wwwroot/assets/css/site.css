@@ -1,0 +1,48 @@
+﻿.icon-usuario-margin-top {
+    margin-top: 14px !important;
+}
+.alinhamento-form-login-register {
+    margin-left: 16% !important;
+}
+.alinhamento-form-cadastro {
+    margin-left: 14% !important;
+}
+.td-invisivel{
+    display:none;
+}
+.alinhamento-grid-index {
+    margin-right: 15px !important;
+    margin-left: 5px !important;
+}
+.main-panel .data-grid {
+    width:100%!important;
+}
+.content .pagina-index{
+    padding-top:0px!important;
+}
+.actionButton {
+    max-width: 15% !important;
+}
+#tableCategoria_wrapper .row {
+    width: 100% !important;
+}
+#tableCategoria_length select{
+    margin-left:20px!important;
+}
+#tableCategoria_wrapper .row .nome {
+    width: 30%!important;
+}
+#tableCategoria_wrapper .row .descricao {
+    width: 40%!important;
+}
+#tableCategoria_wrapper .row .ativo{
+    width:15%!important;
+}
+.card-menu-link{
+    color:white!important;
+    text-decoration:none!important;
+}
+.alinhamento-card-menu {
+    margin: 0 auto!important;
+    float: none!important;
+}

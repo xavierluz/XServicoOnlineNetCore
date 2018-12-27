@@ -1,0 +1,63 @@
+﻿@model XServicoOnline.ViewModels.CategoriaViewModel
+
+@{
+    ViewData["Title"] = "CreateCategoria";
+}
+
+<div class="wrapper ">
+
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid alinhamento-form-cadastro">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Categoria</h4>
+                                <p class="card-category">Preencha os campos</p>
+                            </div>
+                            <div class="card-body">
+                                <form asp-action="CreateCategoria" method="post" id="formCategoria" role="form">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="Nome" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="Nome" type="text" class="form-control">
+                                                <span asp-validation-for="Nome" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">description</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="Descricao" class="bmd-label-floating">Descrição</label>
+                                                <textarea asp-for="Descricao" type="text" class="form-control" rows="4" cols="2"></textarea>
+                                                <span asp-validation-for="Descricao" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

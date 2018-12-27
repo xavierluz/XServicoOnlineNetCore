@@ -1,0 +1,9 @@
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\bin\Debug\netcoreapp2.1\ServicesInterfaces.deps.json
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\bin\Debug\netcoreapp2.1\ServicesInterfaces.dll
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\bin\Debug\netcoreapp2.1\ServicesInterfaces.pdb
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.csproj.CoreCompileInputs.cache
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.AssemblyInfoInputs.cache
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.AssemblyInfo.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.dll
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.pdb
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.csprojAssemblyReference.cache

@@ -1,0 +1,96 @@
+﻿@model XServicoOnline.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutInicial.cshtml";
+}
+<div class="wrapper ">
+
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid alinhamento-form-login-register">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Login</h4>
+                                <p class="card-category">Preencha o E-mail e Senha</p>
+                            </div>
+                            <div class="card-body">
+                                <form asp-action="Login" method="post" id="formRegister" role="form">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">person</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="Email" class="bmd-label-floating">email</label>
+                                                <input asp-for="Email" type="email" class="form-control">
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">lock</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Senha</label>
+                                                <input asp-for="PasswordHash" type="password" class="form-control">
+                                                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+
+                                    <button type="submit" class="btn btn-primary pull-right">Login</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="float-left">
+                    <ul>
+                        <li>
+                            <a href="https://www.creative-tim.com">
+                                Creative Tim
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://creative-tim.com/presentation">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.creative-tim.com/license">
+                                Licenses
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright float-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>, made with <i class="material-icons">favorite</i> by
+                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
