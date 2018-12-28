@@ -1,17 +1,19 @@
 ﻿<div class="wrapper">
-
+   
     <div class="main-panel data-grid">
         <div class="content pagina-index">
             <div class="container-fluid alinhamento-grid-index">
                 <div class="row">
 
                     <div class="col-md-12">
-
+                        <a asp-controller="Material" asp-action="CreateCategoria" class="btn btn-primary btn-round">Novo</a>
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title ">Categoria</h4>
                                 <p class="card-category">Categoria cadastradas.</p>
+
                             </div>
+
                             <div class="card-body">
                                 <div class="table-responsive row-grid">
                                     <table id="tableCategoria" class="table table-bordered border-table">
@@ -50,6 +52,9 @@
             categoria.Load();
             $('.active').removeClass();
             $('.material-link').addClass('active');
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         });
     </script>
 

@@ -31,12 +31,12 @@
             "bInfo": true,
             "bAutoWidth": false,
             "columnDefs": [
-                { "className": "actionButton border-table-td", "targets": [4] },
-                { "className": "border-table-td", "targets": [0] },
-                { "className": "border-table-td text-center", "targets": [1] },
-                { "className": "border-table-td ativo", "targets": [2] },
-                { "className": "td-invisivel categoria-id", "targets": [3], "searchable": false },
-                { "className": "text-center custom-middle-align", "targets": [0, 1, 2, 3] }
+                { "className": "actionButton border-table-td coluna-grid-padding", "targets": [4] },
+                { "className": "border-table-td coluna-grid-padding", "targets": [0] },
+                { "className": "border-table-td text-center coluna-grid-padding", "targets": [1] },
+                { "className": "border-table-td text-center ativo coluna-grid-padding", "targets": [2] },
+                { "className": "td-invisivel categoria-id coluna-grid-padding", "targets": [3], "searchable": false },
+                { "className": "text-center custom-middle-align coluna-grid-padding", "targets": [0, 1, 2, 3] }
             ],
             "language":
             {
@@ -51,14 +51,14 @@
                 "dataType": "JSON"
             },
             "columns": [
-                { "data": "Nome" },
-                { "data": "Descricao" },
-                { "data": "Ativo" },
-                { "data": "Id" },
-                { "defaultContent": '<div class="form-group" style="margin-left: -1%;"><p><a class="action-editar actionButton" title="Editar"><i class="glyphicon glyphicon-pencil editarclass"></i><span class="sr-only aria-hidden="true"">Editar</span></a><a class="action-detalhe actionButton" title="Detalhes"><i class="glyphicon glyphicon-search detalheclass"></i><span class="sr-only" aria-hidden="true">Detalhes</span></a></p></div>' },
+                { "data": "nome" },
+                { "data": "descricao" },
+                { "data": "ativo" },
+                { "data": "id" },
+                { "defaultContent": '<div class="form-group default-content-data-table" style="margin-left: -1%;"><a class="action-editar" title="Editar"><i class="material-icons editarclass" data-toggle="tooltip" data-placement="top" title="Tooltip on top">edit</i><span class="sr-only aria-hidden="true"">Editar</span></a><a class="action-detalhe" title="Detalhes"><i class="material-icons detalheclass">details</i><span class="sr-only" aria-hidden="true">Detalhes</span></a></div>' }
             ],
             "initComplete": function () {
-
+                criarAction();
             },
             "fnUpdate": function () {
 
@@ -66,6 +66,16 @@
             "fnInfoCallback": function (oSettings, iStart, iEnd, iMax, iTotal, sPre) {
                 criarAction();
                 console.log(oSettings);
+            },
+            "rowCallback": function (row, data, Object, index) {
+                $(row).find('td').each(function () {
+                    console.log($(this));
+                    if ($(this).text() === 'false')
+                        $(this).text('Não');
+                    if ($(this).text() === 'true')
+                        $(this).text('Sim');
+                });
+                return row;
             },
             "oLanguage": {
                 "sProcessing": "Processando...",

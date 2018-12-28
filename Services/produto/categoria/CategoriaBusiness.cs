@@ -89,9 +89,28 @@ namespace Services.produto.categoria
             }
         }
 
-        public override Task<ICategoria> Incluir(ICategoria categoria)
+        public override async Task<ICategoria> Incluir(ICategoria categoria)
         {
-            throw new NotImplementedException();
+            await produtoUnitOfWork.CreateTransacao();
+            try
+            {
+                Categoria _categoria = Categoria.GetInstance().GetCategoria(categoria);
+                await this.categoriaRepositorio.AdicionarAsync(_categoria);
+                await produtoUnitOfWork.SalvarAsync();
+                produtoUnitOfWork.Commit();
+
+                return _categoria.GetCategoria();
+            }
+
+            catch(Exception ex)
+            {
+                produtoUnitOfWork.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                produtoUnitOfWork.Dispose();
+            }
         }
     }
 }

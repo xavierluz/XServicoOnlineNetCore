@@ -33,6 +33,16 @@ namespace Services.modelo.produto
             categoria.Id = this.Id;
             categoria.Nome = this.Nome;
             return categoria;
-        } 
+        }
+        internal Categoria GetCategoria(ICategoria categoria)
+        {
+            Categoria _categoria = new Categoria();
+            _categoria.Ativo = categoria.Ativo;
+            _categoria.Descricao = categoria.Descricao;
+            _categoria.Id = categoria.Id;
+            _categoria.Nome = categoria.Nome;
+            _categoria.IMateriais = categoria.IMateriais;
+            return _categoria;
+        }
     }
 }

@@ -36,5 +36,17 @@ namespace XServicoOnline.ViewModels
             };
             return categoria;
         }
+        public CategoriaViewModel GetICategoria(ICategoria categoria)
+        {
+            CategoriaViewModel _categoria = new CategoriaViewModel()
+            {
+                Ativo = categoria.Ativo,
+                Id = categoria.Id,
+                Descricao = categoria.Descricao,
+                Nome = categoria.Nome,
+                IMateriais = categoria.IMateriais
+            };
+            return _categoria;
+        }
     }
 }

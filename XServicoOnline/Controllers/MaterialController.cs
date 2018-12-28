@@ -48,6 +48,7 @@ namespace XServicoOnline.Controllers
         [AllowAnonymous]
         public async Task<JsonResult> GetCategorias()
         {
+            JsonResult jsonResultado = null;
             string search = Request.Form["search[value]"].ToString();
             string draw = Request.Form["draw"].ToString();
             string order = Request.Form["order[0][column]"].ToString();
@@ -63,7 +64,8 @@ namespace XServicoOnline.Controllers
             IList<CategoriaTableViewModel> categoriaTableViewModels = ((List<ICategoria>)categorias).ConvertAll(new Converter<ICategoria, CategoriaTableViewModel>(CategoriaTableViewModel.GetInstance));
             var retorno = CategoriaTableViewModel.Ordenar(order, orderDir, categoriaTableViewModels);
 
-            return Json(new { draw = Convert.ToInt32(draw), recordsTotal = totalRegistros, recordsFiltered = totalRegistros, data = retorno });
+            jsonResultado =  Json(new { draw = Convert.ToInt32(draw), recordsTotal = totalRegistros, recordsFiltered = totalRegistros, data = retorno });
+            return jsonResultado;
         }
     }
 }

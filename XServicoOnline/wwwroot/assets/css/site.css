@@ -21,7 +21,16 @@
     padding-top:0px!important;
 }
 .actionButton {
-    max-width: 15% !important;
+    width:5%!important;
+    margin-top:0px!important;
+    margin-bottom:0px!important;
+}
+.default-content-data-table {
+    width: 100% !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 #tableCategoria_wrapper .row {
     width: 100% !important;
@@ -30,13 +39,13 @@
     margin-left:20px!important;
 }
 #tableCategoria_wrapper .row .nome {
-    width: 30%!important;
+    width: 25%!important;
 }
 #tableCategoria_wrapper .row .descricao {
-    width: 40%!important;
+    width: 45%!important;
 }
 #tableCategoria_wrapper .row .ativo{
-    width:15%!important;
+    width:5%!important;
 }
 .card-menu-link{
     color:white!important;
@@ -45,4 +54,24 @@
 .alinhamento-card-menu {
     margin: 0 auto!important;
     float: none!important;
+}
+.editarclass {
+    padding-top: 5px !important;
+    margin-left: 2px !important;
+    padding-bottom: 0px !important;
+}
+.detalheclass {
+    padding-top: 5px !important;
+    margin-left: 2px !important;
+    padding-bottom: 0px !important;
+}
+.action-editar {
+    cursor: pointer;
+}
+.action-detalhe {
+    cursor: pointer;
+}
+.coluna-grid-padding {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }
