@@ -1,0 +1,65 @@
+﻿<div class="wrapper">
+
+    <div class="main-panel data-grid">
+        <div class="content pagina-index">
+            <div class="container-fluid alinhamento-grid-index">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <a asp-controller="Material" asp-action="CreateMaterial" class="btn btn-primary btn-round">Novo</a>
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">Material</h4>
+                                <p class="card-category">Materiais cadastrados.</p>
+
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive row-grid">
+                                    <table id="tableMaterial" class="table table-bordered border-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-table-tr nome" data-sortable="true">Nome</th>
+                                                <th class="border-table-tr descricao" data-sortable="true">Descrição</th>
+                                                <th class="border-table-tr ativo" data-sortable="true">Ativo</th>
+                                                <th class="border-table-tr td-invisivel" data-sortable="false"></th>
+                                                <th class="border-table-tr actionButton" data-sortable="false"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="body-material" data-toggle="table"></tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <partial name="_PrincipalPartial" />
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- /.login-box -->
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <partial name="_DataTableReferenciaJS" />
+    <script src="~/assets/js/material/material-datatable.js"></script>
+    <script>
+        $(document).ready(function () {
+            var material = new Material();
+            material.Load();
+            $('.active').removeClass();
+            $('.material-link').addClass('active');
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        });
+    </script>
+
+}
+

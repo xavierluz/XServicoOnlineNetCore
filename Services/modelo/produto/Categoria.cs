@@ -9,7 +9,8 @@ namespace Services.modelo.produto
     public class Categoria:ICategoria
     {
         protected Categoria() {
-            Materiais = new List<Material>();
+            this.IMateriais = new List<IMaterial>();
+            this.Materiais = new List<Material>();
         }
 
         public int Id { get; set; }

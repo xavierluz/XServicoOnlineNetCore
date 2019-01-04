@@ -45,8 +45,7 @@
                                     </div>
 
 
-                                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
-                                    <div class="clearfix"></div>
+                                    <partial name="_BotaoSalvarRetornar" />
                                 </form>
                             </div>
                         </div>
@@ -55,9 +54,17 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 </div>
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('#buttonSalvar').click(function () {
+                submitAjax('#formCategoria', 'CreateCategoria');
+            });
+
+        });
+    </script>
 }

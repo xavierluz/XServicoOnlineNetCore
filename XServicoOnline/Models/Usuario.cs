@@ -30,6 +30,7 @@ namespace XServicoOnline.Models
         #endregion
         #region "Atributos das entidades personalizados"
         public override string Id { get => base.Id; set => base.Id = value; }
+        public Guid EmpresaId { get; set; }
         [Display(Name ="Usuário")]
         [Required(ErrorMessage ="Usuário é obrigatório!")]
         [StringLength(50,ErrorMessage ="Digite no mínimo 5 caracters!", MinimumLength =5)]

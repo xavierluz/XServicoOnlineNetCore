@@ -14,6 +14,7 @@ namespace Services.produto.repositorio
 {
     internal class MaterialRepositorio : BaseProdutoRepositorio<Material>
     {
+        private IQueryable<Material> query;
         internal MaterialRepositorio(ProdutoContexto produtoContexto, IsolationLevel isolationLevel) : base(produtoContexto, isolationLevel)
         {
 
@@ -52,7 +53,9 @@ namespace Services.produto.repositorio
             return await this.produtoContexto.Set<Material>().FindAsync(key);
         }
 
+
         internal override List<Expression<Func<Material, object>>> Includes { get; } = new List<Expression<Func<Material, object>>>();
+
         internal override List<string> IncludeStrings { get; } = new List<string>();
         protected virtual async Task AddInclude(Expression<Func<Material, object>> includeExpression)
         {
@@ -63,29 +66,29 @@ namespace Services.produto.repositorio
             await Task.Run(() => IncludeStrings.Add(includeString));
         }
 
-        internal override Task SetQueryAsync(IQueryable<Material> query)
+        internal override async Task SetQueryAsync(IQueryable<Material> query)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => this.query = query);
         }
 
-        internal override Task<Material> GetAsync(IQueryable<Material> query)
+        internal override async Task<Material> GetAsync(IQueryable<Material> query)
         {
-            throw new NotImplementedException();
+            return await query.AsNoTracking().FirstOrDefaultAsync();
         }
 
-        internal override Task<List<Material>> GetsAsync(IQueryable<Material> query)
+        internal override async Task<List<Material>> GetsAsync(IQueryable<Material> query)
         {
-            throw new NotImplementedException();
+            return await query.AsNoTracking().ToListAsync();
         }
 
-        internal override Task<int> GetCountAsync(IQueryable<Material> query)
+        internal override async Task<int> GetCountAsync(IQueryable<Material> query)
         {
-            throw new NotImplementedException();
+            return await query.AsNoTracking().CountAsync();
         }
 
-        internal override Task<Material> GetAsync()
+        internal override async Task<Material> GetAsync()
         {
-            throw new NotImplementedException();
+            return await this.query.AsNoTracking().FirstOrDefaultAsync();
         }
     }
 }

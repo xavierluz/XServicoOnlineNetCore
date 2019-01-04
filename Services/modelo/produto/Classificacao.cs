@@ -8,7 +8,10 @@ namespace Services.modelo.produto
 {
     public class Classificacao:IClassificacao
     {
-        protected Classificacao() { }
+        protected Classificacao() {
+            this.IMateriais = new List<IMaterial>();
+            this.Materiais = new List<Material>();
+        }
 
         public int Id { get ; set ; }
         public string Nome { get ; set ; }
@@ -30,6 +33,15 @@ namespace Services.modelo.produto
             classificacao.Id = this.Id;
             classificacao.Nome = this.Nome;
             return classificacao;
-        } 
+        }
+        internal Classificacao GetClassificacao(IClassificacao classificacao)
+        {
+            Classificacao _classificacao = new Classificacao();
+            _classificacao.Ativo = classificacao.Ativo;
+            _classificacao.Descricao = classificacao.Descricao;
+            _classificacao.Id = classificacao.Id;
+            _classificacao.Nome = classificacao.Nome;
+            return _classificacao;
+        }
     }
 }

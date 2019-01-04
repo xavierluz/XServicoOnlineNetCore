@@ -1,11 +1,8 @@
-﻿using Services.bases;
-using Services.produto.categoria;
-using ServicesInterfaces.banco;
+﻿using Services.produto.categoria;
+using Services.produto.classificacao;
+using Services.produto.material;
 using ServicesInterfaces.produto;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace Services.produto
 {
@@ -17,9 +14,17 @@ namespace Services.produto
             return new ProdutoFactory();
         }
 
-        public CategoriaAbstract CreateInstance(IsolationLevel isolationLevel)
+        public CategoriaAbstract CreateCategoria(IsolationLevel isolationLevel)
         {
             return CategoriaBusiness.GetInstancia(isolationLevel);
+        }
+        public ClassificacoAbstract CreateClassificao(IsolationLevel isolationLevel)
+        {
+            return ClassificacaoBusiness.GetInstancia(isolationLevel);
+        }
+        public MaterialAbstract CreateMaterial(IsolationLevel isolationLevel)
+        {
+            return MaterialBusiness.GetInstancia(isolationLevel);
         }
     }
 }

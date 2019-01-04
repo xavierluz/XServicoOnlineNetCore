@@ -14,6 +14,7 @@ namespace Services.produto.repositorio
 {
     internal class ClassificacaoRepositorio : BaseProdutoRepositorio<Classificacao>
     {
+        private IQueryable<Classificacao> query;
         internal ClassificacaoRepositorio(ProdutoContexto produtoContexto, IsolationLevel isolationLevel) : base(produtoContexto, isolationLevel)
         {
         }
@@ -51,7 +52,9 @@ namespace Services.produto.repositorio
             return await this.produtoContexto.Set<Classificacao>().FindAsync(key);
         }
 
+
         internal override List<Expression<Func<Classificacao, object>>> Includes { get; } = new List<Expression<Func<Classificacao, object>>>();
+
         internal override List<string> IncludeStrings { get; } = new List<string>();
         protected virtual async Task AddInclude(Expression<Func<Classificacao, object>> includeExpression)
         {
@@ -62,29 +65,29 @@ namespace Services.produto.repositorio
             await Task.Run(() => IncludeStrings.Add(includeString));
         }
 
-        internal override Task SetQueryAsync(IQueryable<Classificacao> query)
+        internal override async Task SetQueryAsync(IQueryable<Classificacao> query)
         {
-            throw new NotImplementedException();
+            await Task.Run(() => this.query = query);
         }
 
-        internal override Task<Classificacao> GetAsync(IQueryable<Classificacao> query)
+        internal override async Task<Classificacao> GetAsync(IQueryable<Classificacao> query)
         {
-            throw new NotImplementedException();
+            return await query.AsNoTracking().FirstOrDefaultAsync();
         }
 
-        internal override Task<List<Classificacao>> GetsAsync(IQueryable<Classificacao> query)
+        internal override async Task<List<Classificacao>> GetsAsync(IQueryable<Classificacao> query)
         {
-            throw new NotImplementedException();
+            return await query.AsNoTracking().ToListAsync();
         }
 
-        internal override Task<int> GetCountAsync(IQueryable<Classificacao> query)
+        internal override async Task<int> GetCountAsync(IQueryable<Classificacao> query)
         {
-            throw new NotImplementedException();
+            return await query.AsNoTracking().CountAsync();
         }
 
-        internal override Task<Classificacao> GetAsync()
+        internal override async Task<Classificacao> GetAsync()
         {
-            throw new NotImplementedException();
+            return await this.query.AsNoTracking().FirstOrDefaultAsync();
         }
     }
 }

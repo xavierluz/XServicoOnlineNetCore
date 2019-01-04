@@ -16,10 +16,13 @@
             let id = $(this).parent().parent().parent().parent().find(actionId).text()
             window.location = './Detalhes?id=' + id;
         });
-        $(actionEditar).click(function () {
-            var id = $(this).parent().parent().parent().parent().find(actionId).text()
-            window.location = './Editar?id=' + id;
-        });
+        //$(actionEditar).click(function () {
+        //    var id = $(this).parent().parent().parent().parent().find(actionId).text()
+        //    window.location = './Editar?id=' + id;
+        //});
+    };
+    var editarClickHandler = function (categoria) {
+        window.location = './EditarCategoria?categoriaId=' + categoria.id; 
     };
     var criarTablecategoria = function () {
 
@@ -74,6 +77,9 @@
                         $(this).text('Não');
                     if ($(this).text() === 'true')
                         $(this).text('Sim');
+                });
+                $(actionEditar, row).bind('click', () => {
+                    editarClickHandler(data);
                 });
                 return row;
             },

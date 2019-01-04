@@ -33,7 +33,7 @@ namespace Services.produto.contexto
             base.OnModelCreating(modelBuilder);
             CategoriaMap.Create(modelBuilder);
             ClassificaoMap.Create(modelBuilder);
-
+            MaterialMap.Create(modelBuilder);
             modelBuilder.HasDefaultSchema("dbo");
         }
 

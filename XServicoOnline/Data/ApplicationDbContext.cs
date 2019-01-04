@@ -36,6 +36,7 @@ namespace XServicoOnline.Data
                 b.HasIndex(u => u.NormalizedUserName).HasName("IDX_USUARIO_NOME_NORMALIZADO").IsUnique();
                 b.HasIndex(u => u.NormalizedEmail).HasName("IDX_USUARIO_EMAIL");
                 b.HasIndex(u => u.Nome).HasName("IDX_USUARIO_NOME");
+                b.HasIndex(u => u.EmpresaId).HasName("IDX_USUARIO_EMPRESA");
                 // Maps to the AspNetUsers table
                 b.ToTable("Usuario");
 
@@ -44,6 +45,7 @@ namespace XServicoOnline.Data
 
                 // Limit the size of columns to use efficient database types
                 b.Property(u => u.Id).HasMaxLength(100).ValueGeneratedOnAdd();
+                b.Property(u => u.EmpresaId).HasMaxLength(100).IsRequired();
                 b.Property(u => u.Nome).HasMaxLength(50).HasColumnName("Nome").IsRequired();
                 b.Property(u => u.UserName).HasMaxLength(50).HasColumnName("Usuario").IsRequired(); 
                 b.Property(u => u.NormalizedUserName).HasMaxLength(256).HasColumnName("NomeNormalizado"); ;

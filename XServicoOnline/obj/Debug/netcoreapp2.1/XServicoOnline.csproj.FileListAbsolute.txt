@@ -48,3 +48,12 @@ C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServ
 C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.pdb
 C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_MenuCard.g.cshtml.cs
 C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Material\Index.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_PrincipalPartial.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Material\EditarCategoria.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_BotaoSalvarRetornar.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Material\ClassificacaoIndex.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Material\CreateClassificacao.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Material\EditarClassificacao.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Material\MaterialIndex.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Material\CreateMaterial.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Material\EditarMaterial.g.cshtml.cs

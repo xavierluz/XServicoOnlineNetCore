@@ -1,0 +1,98 @@
+﻿@model XServicoOnline.ViewModels.MaterialViewModel
+
+@{
+    ViewData["Title"] = "Cadastrar Material";
+}
+
+<div class="wrapper ">
+
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid alinhamento-form-cadastro">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Categoria</h4>
+                                <p class="card-category">Preencha os campos</p>
+                            </div>
+                            <div class="card-body">
+                                <form asp-action="EditarMaterial" method="post" id="formMaterial" role="form">
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="hidden" asp-for="Ativo" />
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="Nome" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="Nome" type="text" class="form-control">
+                                                <span asp-validation-for="Nome" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="categoriaId" class="bmd-label-floating">Categoria</label>
+                                                <select asp-for="categoriaId" asp-items="@Model.Categorias" class="form-control">
+                                                    <option value="">Selecione a categoria do material</option>
+                                                </select>
+                                                <span asp-validation-for="categoriaId" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="classificacaoId" class="bmd-label-floating">Classificação</label>
+                                                <select asp-for="classificacaoId" asp-items="@Model.Classificacoes" class="form-control">
+                                                    <option value="">Selecione a classificação do material</option>
+                                                </select>
+                                                <span asp-validation-for="classificacaoId" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">description</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="Descricao" class="bmd-label-floating">Descrição</label>
+                                                <textarea asp-for="Descricao" type="text" class="form-control" rows="4" cols="2"></textarea>
+                                                <span asp-validation-for="Descricao" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <partial name="_BotaoSalvarRetornar" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('#buttonSalvar').click(function () {
+                submitAjax('#formMaterial', 'EditarMaterial');
+            });
+
+        });
+    </script>
+}

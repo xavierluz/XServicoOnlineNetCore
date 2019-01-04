@@ -6,4 +6,3 @@ C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\Servi
 C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.AssemblyInfo.cs
 C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.dll
 C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.pdb
-C:\Users\807326\Documents\particular\projetos\servicoonline\XServicoOnline\ServicesInterfaces\obj\Debug\netcoreapp2.1\ServicesInterfaces.csprojAssemblyReference.cache

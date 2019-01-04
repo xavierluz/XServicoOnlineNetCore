@@ -6,7 +6,21 @@
     <script>
         $('.active').removeClass();
         $('.material-link').addClass('active');
-    
+        $(document).ready(function () {
+            getQuantidade();
+            setInterval(function () { // (A)
+                getQuantidade();
+               //{"quantidadeDeCategoria":1,"quantidadeDeClassificacao":2,"quantidadeDeMaterial":2}
+            }, 2000);
+        });
+        var getQuantidade = function () {
+            $.get('api/Material/GetQuantidade', function (data) {
+                $('.quantidade-categoria').text(data.quantidadeDeCategoria);
+                $('.quantidade-classificacao').text(data.quantidadeDeClassificacao);
+                $('.quantidade-material').text(data.quantidadeDeMaterial);
+
+            });
+        }
     </script>
 
 

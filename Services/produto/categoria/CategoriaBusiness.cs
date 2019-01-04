@@ -24,7 +24,6 @@ namespace Services.produto.categoria
             this.dbConnection = PostgreSqlFactory.GetInstance().GetConnection();
             optionsBuilder = new DbContextOptionsBuilder<ProdutoContexto>();
             optionsBuilder.UseNpgsql(this.dbConnection);
-
             this.produtoUnitOfWork = ProdutoUnitOfWork.GetInstance(optionsBuilder.Options, this.isolationLevel);
             this.categoriaRepositorio = this.produtoUnitOfWork.CategoriaRepositorio;
         }
@@ -33,19 +32,61 @@ namespace Services.produto.categoria
             return new CategoriaBusiness(isolationLevel);
         }
 
-        public override Task<ICategoria> Atualizar(ICategoria categoria)
+        public override async Task<ICategoria> Atualizar(ICategoria categoria)
         {
-            throw new NotImplementedException();
+            await produtoUnitOfWork.CreateTransacao();
+            try
+            {
+                Categoria _categoria = Categoria.GetInstance().GetCategoria(categoria);
+                await this.categoriaRepositorio.AtualizarAsync(_categoria);
+                await produtoUnitOfWork.SalvarAsync();
+                produtoUnitOfWork.Commit();
+
+                return _categoria.GetCategoria();
+            }
+
+            catch (Exception ex)
+            {
+                produtoUnitOfWork.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                produtoUnitOfWork.Dispose();
+            }
         }
 
-        public override Task<ICategoria> Consultar(int categoriaId)
+        public override async Task<ICategoria> ConsultarPorId(int categoriaId)
         {
-            throw new NotImplementedException();
+            await produtoUnitOfWork.CreateTransacao();
+            try
+            {
+                IQueryable<Categoria> query = (from q in this.categoriaRepositorio.produtoContexto.Categorias
+                                               where q.Id == categoriaId
+                                                 && q.Ativo == true
+                                               select q);
+                Categoria categoria = await this.categoriaRepositorio.GetAsync(query);
+                produtoUnitOfWork.Commit();
+                return categoria.GetCategoria();
+            }
+            catch(Exception ex)
+            {
+                produtoUnitOfWork.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                produtoUnitOfWork.Dispose();
+            }
         }
 
-        public override Task<IList<ICategoria>> Consultar()
+        public override async Task<IList<ICategoria>> GetCategorias()
         {
-            throw new NotImplementedException();
+            IQueryable<Categoria> query = (from q in this.categoriaRepositorio.produtoContexto.Categorias
+                                           where q.Ativo == true
+                                           select q);
+            List<Categoria> categorias = await this.categoriaRepositorio.GetsAsync(query);
+            return categorias.ConvertAll(new Converter<Categoria, ICategoria>(Categoria.GetInstance().GetCategoria));
         }
 
         public override async Task<IList<ICategoria>> getCategoriasParaMontarGrid(int paginaIndex, string filtro, int registroPorPagina)
@@ -89,12 +130,21 @@ namespace Services.produto.categoria
             }
         }
 
+        public override async Task<int> GetQuantidade()
+        {
+            IQueryable<Categoria> query = (from q in this.categoriaRepositorio.produtoContexto.Categorias
+                                           where q.Ativo == true
+                                           select q);
+            return await this.categoriaRepositorio.GetCountAsync(query);
+        }
+
         public override async Task<ICategoria> Incluir(ICategoria categoria)
         {
             await produtoUnitOfWork.CreateTransacao();
             try
             {
                 Categoria _categoria = Categoria.GetInstance().GetCategoria(categoria);
+                _categoria.Ativo = true;
                 await this.categoriaRepositorio.AdicionarAsync(_categoria);
                 await produtoUnitOfWork.SalvarAsync();
                 produtoUnitOfWork.Commit();

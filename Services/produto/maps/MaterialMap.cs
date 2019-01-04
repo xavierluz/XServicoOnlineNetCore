@@ -10,13 +10,16 @@ namespace Services.produto.maps
     {
         private MaterialMap(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Material>().ToTable("Material", "dbo");
-            modelBuilder.Entity<Material>().HasKey(x => x.Id);
-            modelBuilder.Entity<Material>().Property(x => x.Id).UseNpgsqlSerialColumn<int>();
-            modelBuilder.Entity<Material>().Property(x => x.Nome).IsRequired().HasMaxLength(50);
-            modelBuilder.Entity<Material>().Property(x => x.Descricao).HasMaxLength(500);
-            modelBuilder.Entity<Material>().Property(x => x.Ativo).IsRequired();
-            modelBuilder.Entity<Material>().HasIndex(x => x.Nome).HasName("INDX_MATERIAL_NOME");
+            modelBuilder.Entity<Material>(ma =>
+            {
+                ma.ToTable("Material", "dbo");
+                ma.HasKey(x => x.Id);
+                ma.Property(x => x.Id).UseNpgsqlSerialColumn<int>();
+                ma.Property(x => x.Nome).IsRequired().HasMaxLength(50);
+                ma.Property(x => x.Descricao).HasMaxLength(500);
+                ma.Property(x => x.Ativo).IsRequired();
+                ma.HasIndex(x => x.Nome).HasName("INDX_MATERIAL_NOME");
+            });
         }
 
         internal static MaterialMap Create(ModelBuilder modelBuilder)

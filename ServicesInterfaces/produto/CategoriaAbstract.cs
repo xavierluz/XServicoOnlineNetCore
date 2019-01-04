@@ -29,9 +29,10 @@ namespace ServicesInterfaces.produto
         #region "Métodos abstratos"
         public abstract Task<ICategoria> Incluir(ICategoria categoria);
         public abstract Task<ICategoria> Atualizar(ICategoria categoria);
-        public abstract Task<ICategoria> Consultar(int categoriaId);
-        public abstract Task<IList<ICategoria>> Consultar();
+        public abstract Task<ICategoria> ConsultarPorId(int categoriaId);
+        public abstract Task<IList<ICategoria>> GetCategorias();
         public abstract Task<IList<ICategoria>> getCategoriasParaMontarGrid(int paginaIndex, string filtro, int registroPorPagina);
+        public abstract Task<Int32> GetQuantidade();
         #endregion
     }
 }

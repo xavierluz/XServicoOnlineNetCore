@@ -15,8 +15,7 @@
 
   <ItemGroup>
     <Compile Remove="base\EnumNivelIsolamentoBancoDeDados.cs" />
-    <Compile Remove="Migrations\20181221173356_InitialService.cs" />
-    <Compile Remove="Migrations\20181221173906_InitialService.cs" />
+    <Compile Remove="modelo\Empresa.cs" />
   </ItemGroup>
 
   <ItemGroup>

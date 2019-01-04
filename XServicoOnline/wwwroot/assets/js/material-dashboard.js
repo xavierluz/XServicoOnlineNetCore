@@ -182,7 +182,51 @@ md = {
       }
     });
   },
+    notificacaoSucesso: function (from, align, message) {
+        let type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
+        $.notify({
+            icon: "add_alert",
+            message:message
 
+        }, {
+                type: type[3],
+                timer: 1000,
+                placement: {
+                    from: from,
+                    align: align
+                }
+            });
+    },
+    notificacaoErro: function (from, align, message) {
+        let type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
+        $.notify({
+            icon: "add_alert",
+            message: message
+
+        }, {
+                type: type[2],
+                timer: 1000,
+                placement: {
+                    from: from,
+                    align: align
+                }
+            });
+    },
+    notificacaoAtencao: function (from, align, message) {
+        let type = ['', 'info', 'danger', 'success', 'warning', 'rose', 'primary'];
+        $.notify({
+            icon: "add_alert",
+            message: message
+
+        }, {
+                type: type[4],
+                timer: 1000,
+                placement: {
+                    from: from,
+                    align: align
+                }
+            });
+    },
   initDocumentationCharts: function() {
     if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */

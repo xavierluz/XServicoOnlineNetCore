@@ -16,7 +16,7 @@ namespace XServicoOnline.ViewModels
 
         public int Id { get; set; }
         [Required(ErrorMessage = "Digite o nome da categoria de material")]
-        [StringLength(50, ErrorMessage = "Digite no mínimo 8 e máximo 50 caracters", MinimumLength = 8)]
+        [StringLength(50, ErrorMessage = "Digite no mínimo 3 e máximo 50 caracters", MinimumLength = 3)]
         public String Nome { get;set; }
         [MaxLength(500)]
         [DataType(DataType.MultilineText)]
