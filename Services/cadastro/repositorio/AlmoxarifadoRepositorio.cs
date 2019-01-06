@@ -16,11 +16,15 @@ namespace Services.cadastro.repositorio
         private IQueryable<Almoxarifado> query;
         private CadastroContexto cadastroContexto = null;
         private IsolationLevel isolationLevel = IsolationLevel.ReadCommitted;
-        internal AlmoxarifadoRepositorio(CadastroContexto cadastroContexto, IsolationLevel isolationLevel)
+        private AlmoxarifadoRepositorio(CadastroContexto cadastroContexto, IsolationLevel isolationLevel)
         {
             this.isolationLevel = isolationLevel;
             this.cadastroContexto = cadastroContexto;
 
+        }
+        internal static AlmoxarifadoRepositorio GetInstance (CadastroContexto cadastroContexto, IsolationLevel isolationLevel)
+        {
+            return new AlmoxarifadoRepositorio(cadastroContexto, isolationLevel);
         }
         internal async Task AdicionarAsync(Almoxarifado entidade)
         {

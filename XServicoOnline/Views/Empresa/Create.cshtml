@@ -1,0 +1,125 @@
+﻿@model XServicoOnline.ViewModels.EmpresaViewModel
+
+@{
+    ViewData["Title"] = "Empresa";
+}
+
+<div class="wrapper ">
+
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid alinhamento-form-cadastro">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Empresa</h4>
+                                <p class="card-category">Preencha os campos</p>
+                            </div>
+                            <div class="card-body">
+                                <form asp-action="Create" method="post" id="formEmpresa" role="form">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="CnpjCpf" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="CnpjCpf" type="text" class="form-control">
+                                                <span asp-validation-for="CnpjCpf" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="RazaoSocial" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="RazaoSocial" type="text" class="form-control">
+                                                <span asp-validation-for="RazaoSocial" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="NomeFantasia" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="NomeFantasia" type="text" class="form-control">
+                                                <span asp-validation-for="NomeFantasia" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="Cep" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="Cep" type="text" class="form-control">
+                                                <span asp-validation-for="Cep" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="Logradouro" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="Logradouro" type="text" class="form-control">
+                                                <span asp-validation-for="Logradouro" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="Bairro" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="Bairro" type="text" class="form-control">
+                                                <span asp-validation-for="Bairro" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label for="Cidade" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="Cidade" type="text" class="form-control">
+                                                <span asp-validation-for="Cidade" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                    <partial name="_BotaoSalvarRetornar" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('#buttonSalvar').click(function () {
+                submitAjax('#formEmpresa', 'Create');
+            });
+
+        });
+    </script>
+}

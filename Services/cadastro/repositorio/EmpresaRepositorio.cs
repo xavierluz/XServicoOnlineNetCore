@@ -14,15 +14,18 @@ namespace Services.cadastro.repositorio
     internal class EmpresaRepositorio
     {
         private IQueryable<Empresa> query;
-        private CadastroContexto cadastroContexto = null;
+        internal CadastroContexto cadastroContexto = null;
         private IsolationLevel isolationLevel = IsolationLevel.ReadCommitted;
-        internal EmpresaRepositorio(CadastroContexto cadastroContexto, IsolationLevel isolationLevel)
+        private EmpresaRepositorio(CadastroContexto cadastroContexto, IsolationLevel isolationLevel)
         {
             this.isolationLevel = isolationLevel;
             this.cadastroContexto = cadastroContexto;
 
         }
-
+        internal static EmpresaRepositorio GetInstance(CadastroContexto cadastroContexto, IsolationLevel isolationLevel)
+        {
+            return new EmpresaRepositorio(cadastroContexto, isolationLevel);
+        }
 
         internal  async Task AdicionarAsync(Empresa entidade)
         {

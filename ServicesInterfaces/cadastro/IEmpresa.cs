@@ -18,6 +18,7 @@ namespace ServicesInterfaces.cadastro
         String Site { get; set; }
         String Telefone { get; set; }
         String WhatsApp { get; set; }
+        bool Ativo { get; set; }
         ICollection<IAlmoxarifado> IAlmoxarifados { get; set; } 
     }
 }

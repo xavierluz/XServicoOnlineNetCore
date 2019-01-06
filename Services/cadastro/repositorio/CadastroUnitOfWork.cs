@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Services.cadastro.contexto;
+using Services.modelo.cadastro;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,6 +14,8 @@ namespace Services.cadastro.repositorio
     {
         private IsolationLevel isolationLevel = IsolationLevel.ReadCommitted;
         internal CadastroContexto cadastroContexto = null;
+        private AlmoxarifadoRepositorio almoxarifadoRepositorio = null;
+        private EmpresaRepositorio empresaRepositorio = null;
 
         private CadastroUnitOfWork(IsolationLevel isolationLevel)
         {
@@ -23,6 +26,21 @@ namespace Services.cadastro.repositorio
         internal static CadastroUnitOfWork GetInstance(IsolationLevel isolationLevel)
         {
             return new CadastroUnitOfWork(isolationLevel);
+        }
+
+        internal AlmoxarifadoRepositorio GetAlmoxarifadoRepositorio()
+        {
+            if (almoxarifadoRepositorio == null)
+                this.almoxarifadoRepositorio = AlmoxarifadoRepositorio.GetInstance(this.cadastroContexto,this.isolationLevel);
+
+            return this.almoxarifadoRepositorio;
+        }
+        internal EmpresaRepositorio GetEmpresaRepositorio()
+        {
+            if (this.empresaRepositorio == null)
+                this.empresaRepositorio = EmpresaRepositorio.GetInstance(this.cadastroContexto, this.isolationLevel);
+
+            return this.empresaRepositorio;
         }
         internal async Task<int> SalvarAsync()
         {
