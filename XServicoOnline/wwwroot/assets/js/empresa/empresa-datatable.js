@@ -37,8 +37,8 @@
                 { "className": "actionButton border-table-td coluna-grid-padding", "targets": [5] },
                 { "className": "border-table-td coluna-grid-padding", "targets": [0] },
                 { "className": "border-table-td text-center coluna-grid-padding", "targets": [1] },
-                { "className": "border-table-td text-center ativo coluna-grid-padding", "targets": [2] },
-                { "className": "td-invisivel categoria-id coluna-grid-padding", "targets": [3], "searchable": false },
+                { "className": "border-table-td text-center ativo coluna-grid-padding", "targets": [3] },
+                { "className": "td-invisivel categoria-id coluna-grid-padding", "targets": [4], "searchable": false },
                 { "className": "text-center custom-middle-align coluna-grid-padding", "targets": [0, 1, 2, 3, 4] }
             ],
             "language":
@@ -49,13 +49,14 @@
             "serverSide": true,
             "ajax":
             {
-                "url": "GetEmpresas",
+                "url": "Empresa/GetEmpresas",
                 "type": "POST",
                 "dataType": "JSON"
             },
             "columns": [
-                { "data": "nome" },
-                { "data": "descricao" },
+                { "data": "cnpjCpf" },
+                { "data": "razaoSocial" },
+                { "data": "nomeFantasia" },
                 { "data": "ativo" },
                 { "data": "id" },
                 { "defaultContent": '<div class="form-group default-content-data-table" style="margin-left: -1%;"><a class="action-editar" title="Editar"><i class="material-icons editarclass" data-toggle="tooltip" data-placement="top" title="Tooltip on top">edit</i><span class="sr-only aria-hidden="true"">Editar</span></a><a class="action-detalhe" title="Detalhes"><i class="material-icons detalheclass">details</i><span class="sr-only" aria-hidden="true">Detalhes</span></a></div>' }

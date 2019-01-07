@@ -23,12 +23,14 @@ namespace XServicoOnline.Controllers
         private EmpresaAbstract  empresaAbstract = null;
         private IsolationLevel isolationLevel = IsolationLevel.ReadCommitted;
 
+        [HttpGet]
         public async Task<IActionResult> Create()
         {
             return await Task.Run(() => View());
         }
 
-        public async Task<JsonResult> Craete(EmpresaViewModel empresaViewModel)
+        [HttpPost]
+        public async Task<JsonResult> Create(EmpresaViewModel empresaViewModel)
         {
             try
             {
@@ -53,7 +55,7 @@ namespace XServicoOnline.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<JsonResult> GetCategorias()
+        public async Task<JsonResult> GetEmpresas()
         {
             JsonResult jsonResultado = null;
             string search = Request.Form["search[value]"].ToString();

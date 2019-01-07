@@ -1,5 +1,7 @@
 ﻿using Services.cadastro.repositorio;
 using Services.modelo.cadastro;
+using Services.seguranca;
+using Services.seguranca.hash;
 using ServicesInterfaces.cadastro;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,7 @@ namespace Services.cadastro.empresa
     {
         private CadastroUnitOfWork cadastroUnitOfWork = null;
         private EmpresaRepositorio empresaRepositorio = null;
+        private CriptografiaFactory criptografiaFactory = null;
 
         private EmpresaBusiness(IsolationLevel isolationLevel) : base(isolationLevel)
         {
@@ -139,7 +142,12 @@ namespace Services.cadastro.empresa
             {
                 Empresa _empresa = Empresa.GetInstance().GetEmpresa(empresa);
                 _empresa.Ativo = true;
-                await this.empresaRepositorio.AdicionarAsync(_empresa);
+                string criptografar = string.Format("{0}{1}", _empresa.RazaoSocial, _empresa.CnpjCpf);
+                criptografiaFactory = CriptografiaFactory.Create(SHA1Criptografia.Create(criptografar));
+                await criptografiaFactory.CreateHashData();
+                _empresa.Chave = await criptografiaFactory.GetToken();
+
+               await this.empresaRepositorio.AdicionarAsync(_empresa);
                 await cadastroUnitOfWork.SalvarAsync();
                 cadastroUnitOfWork.Commit();
 

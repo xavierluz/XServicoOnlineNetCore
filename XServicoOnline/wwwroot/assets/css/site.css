@@ -124,3 +124,24 @@
 #tableMaterial_wrapper .row .ativo {
     width: 5% !important;
 }
+#tableEmpresa_wrapper .row {
+    width: 100% !important;
+}
+
+#tableEmpresa_length select {
+    margin-left: 20px !important;
+}
+#tableEmpresa_wrapper .row .cnpjCpf {
+    width: 10% !important;
+}
+#tableEmpresa_wrapper .row .razaoSocial {
+    width: 30% !important;
+}
+
+#tableEmpresa_wrapper .row .nomeFantasia {
+    width: 45% !important;
+}
+
+#tableEmpresa_wrapper .row .ativo {
+    width: 5% !important;
+}

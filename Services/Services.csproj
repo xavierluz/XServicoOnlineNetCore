@@ -6,16 +6,25 @@
 
   <ItemGroup>
     <Compile Remove="dominio\**" />
+    <Compile Remove="Migrations\**" />
     <Compile Remove="produto\modelo\**" />
     <EmbeddedResource Remove="dominio\**" />
+    <EmbeddedResource Remove="Migrations\**" />
     <EmbeddedResource Remove="produto\modelo\**" />
     <None Remove="dominio\**" />
+    <None Remove="Migrations\**" />
     <None Remove="produto\modelo\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="base\EnumNivelIsolamentoBancoDeDados.cs" />
     <Compile Remove="modelo\Empresa.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Migrations\20190107103847_CadastroIntial.cs" />
+    <Compile Include="Migrations\20190107103847_CadastroIntial.Designer.cs" />
+    <Compile Include="Migrations\CadastroContextoModelSnapshot.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="comum\" />
     <Folder Include="produto\NovaPasta\" />
   </ItemGroup>
 

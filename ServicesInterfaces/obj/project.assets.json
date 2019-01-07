@@ -681,23 +681,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\xavie\\.nuget\\packages\\": {},
+    "C:\\Users\\807326\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xavie\\Source\\Repos\\xavierluz\\XServicoOnlineNetCore\\ServicesInterfaces\\ServicesInterfaces.csproj",
+      "projectUniqueName": "C:\\Users\\807326\\Documents\\particular\\projetos\\servicoonline\\app\\XServicoOnlineNetCore\\ServicesInterfaces\\ServicesInterfaces.csproj",
       "projectName": "ServicesInterfaces",
-      "projectPath": "C:\\Users\\xavie\\Source\\Repos\\xavierluz\\XServicoOnlineNetCore\\ServicesInterfaces\\ServicesInterfaces.csproj",
-      "packagesPath": "C:\\Users\\xavie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xavie\\Source\\Repos\\xavierluz\\XServicoOnlineNetCore\\ServicesInterfaces\\obj\\",
+      "projectPath": "C:\\Users\\807326\\Documents\\particular\\projetos\\servicoonline\\app\\XServicoOnlineNetCore\\ServicesInterfaces\\ServicesInterfaces.csproj",
+      "packagesPath": "C:\\Users\\807326\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\807326\\Documents\\particular\\projetos\\servicoonline\\app\\XServicoOnlineNetCore\\ServicesInterfaces\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\xavie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\807326\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

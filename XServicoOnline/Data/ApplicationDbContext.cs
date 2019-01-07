@@ -45,7 +45,7 @@ namespace XServicoOnline.Data
 
                 // Limit the size of columns to use efficient database types
                 b.Property(u => u.Id).HasMaxLength(100).ValueGeneratedOnAdd();
-                b.Property(u => u.EmpresaId).HasMaxLength(100).IsRequired();
+                b.Property(u => u.EmpresaId).HasMaxLength(100);
                 b.Property(u => u.Nome).HasMaxLength(50).HasColumnName("Nome").IsRequired();
                 b.Property(u => u.UserName).HasMaxLength(50).HasColumnName("Usuario").IsRequired(); 
                 b.Property(u => u.NormalizedUserName).HasMaxLength(256).HasColumnName("NomeNormalizado"); ;

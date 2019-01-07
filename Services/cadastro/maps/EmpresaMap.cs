@@ -25,7 +25,9 @@ namespace Services.cadastro.maps
                 b.Property(x => x.Cidade).IsRequired().HasMaxLength(50);
                 b.Property(x => x.Site).HasMaxLength(100);
                 b.Property(x => x.Telefone).HasMaxLength(12);
-                b.Property(x => x.WhatsApp).IsRequired().HasMaxLength(12);
+                b.Property(x => x.WhatsApp).HasMaxLength(12);
+                b.Property(x => x.Ativo).IsRequired().HasColumnType("boolean");
+
                 b.HasIndex(x => x.CnpjCpf).HasName("INDX_EMPRESA_CNPJ").IsUnique();
                 b.HasIndex(x => x.CnpjCpf).HasName("INDX_EMPRESA_RAZAOSOCIAL");
                 b.HasIndex(x => x.CnpjCpf).HasName("INDX_EMPRESA_LOGRADOURO");

@@ -19,9 +19,9 @@
                                     <table id="tableEmpresa" class="table table-bordered border-table">
                                         <thead>
                                             <tr>
-                                                <th class="border-table-tr ativo" data-sortable="true">CPF/CNPJ</th>
-                                                <th class="border-table-tr nome" data-sortable="true">Razão Social</th>
-                                                <th class="border-table-tr descricao" data-sortable="true">Fântasia</th>
+                                                <th class="border-table-tr cnpjCpf" data-sortable="true">CPF/CNPJ</th>
+                                                <th class="border-table-tr razaoSocial" data-sortable="true">Razão Social</th>
+                                                <th class="border-table-tr nomeFantasia" data-sortable="true">Fântasia</th>
                                                 <th class="border-table-tr ativo" data-sortable="true">Ativo</th>
                                                 <th class="border-table-tr td-invisivel" data-sortable="false"></th>
                                                 <th class="border-table-tr actionButton" data-sortable="false"></th>
@@ -49,10 +49,10 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <partial name="_DataTableReferenciaJS" />
-    <script src="~/assets/js/material/empresa-datatable.js"></script>
+    <script src="~/assets/js/empresa/empresa-datatable.js"></script>
     <script>
         $(document).ready(function () {
-            var empresa = new empresa();
+            var empresa = new Empresa();
             empresa.Load();
             $('.active').removeClass();
             $('.material-link').addClass('active');

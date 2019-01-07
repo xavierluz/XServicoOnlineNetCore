@@ -53,6 +53,8 @@ namespace Services.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Ativo");
+
                     b.Property<string>("Bairro")
                         .IsRequired()
                         .HasMaxLength(50);
@@ -122,6 +124,8 @@ namespace Services.Migrations
                         .HasMaxLength(100);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<Guid>("EmpresaId");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnName("Bloqueado");
