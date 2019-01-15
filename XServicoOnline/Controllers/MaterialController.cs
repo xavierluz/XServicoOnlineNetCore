@@ -46,6 +46,7 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<JsonResult> CreateCategoria(CategoriaViewModel categoriaViewModel)
         {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
             try
             {
 
@@ -53,7 +54,7 @@ namespace XServicoOnline.Controllers
 
                 categoriaAbstract = ProdutoFactory.GetInstance().CreateCategoria(this.isolationLevel);
                 ICategoria categoria = await categoriaAbstract.Incluir(categoriaViewModel.GetICategoria());
-                this.jsonRetorno = JsonRetornoInclusaoAtualizacao.Create("Inclusão realizado com sucesso");
+                this.jsonRetorno = jsonMensagemRetorno.Create("Inclusão realizado com sucesso");
 
             }catch(Exception ex)
             {
@@ -89,12 +90,13 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<JsonResult> EditarCategoria(CategoriaViewModel categoriaViewModel)
         {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();
                 categoriaAbstract = ProdutoFactory.GetInstance().CreateCategoria(this.isolationLevel);
                 ICategoria categoria = await categoriaAbstract.Atualizar(categoriaViewModel.GetICategoria());
-                this.jsonRetorno = JsonRetornoInclusaoAtualizacao.Create("Atualização realizado com sucesso");
+                this.jsonRetorno = jsonMensagemRetorno.Create("Atualização realizado com sucesso");
             }
             catch(Exception ex)
             {
@@ -171,12 +173,13 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateClassificacao(ClassificacaoViewModel classificacaoViewModel)
         {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();
                 this.classificacoAbstract = ProdutoFactory.GetInstance().CreateClassificao(this.isolationLevel);
                 IClassificacao classificacao= await classificacoAbstract.Incluir(classificacaoViewModel.GetClassificacao());
-                this.jsonRetorno = JsonRetornoInclusaoAtualizacao.Create("Inclusão realizado com sucesso");
+                this.jsonRetorno = jsonMensagemRetorno.Create("Inclusão realizado com sucesso");
             }
             catch (Exception ex)
             {
@@ -211,12 +214,13 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<JsonResult> EditarClassificacao(ClassificacaoViewModel classificacaoViewModel)
         {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();
                 this.classificacoAbstract = ProdutoFactory.GetInstance().CreateClassificao(this.isolationLevel);
                 IClassificacao classificacao = await this.classificacoAbstract.Atualizar(classificacaoViewModel.GetClassificacao());
-                this.jsonRetorno = JsonRetornoInclusaoAtualizacao.Create("Atualização realizado com sucesso");
+                this.jsonRetorno = jsonMensagemRetorno.Create("Atualização realizado com sucesso");
             }
             catch (Exception ex)
             {
@@ -272,12 +276,13 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMaterial(MaterialViewModel materilaViewModel)
         {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();
                 this.materialAbstract = ProdutoFactory.GetInstance().CreateMaterial(this.isolationLevel);
                 IMaterial material = await this.materialAbstract.Incluir(materilaViewModel.GetMaterial());
-                this.jsonRetorno = JsonRetornoInclusaoAtualizacao.Create("Inclusão realizado com sucesso");
+                this.jsonRetorno = jsonMensagemRetorno.Create("Inclusão realizado com sucesso");
             }
             catch (Exception ex)
             {
@@ -316,12 +321,13 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<JsonResult> EditarMaterial(MaterialViewModel  materilaViewModel)
         {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();
                 this.materialAbstract = ProdutoFactory.GetInstance().CreateMaterial(this.isolationLevel);
                 IMaterial material = await this.materialAbstract.Atualizar(materilaViewModel.GetMaterial());
-                this.jsonRetorno = JsonRetornoInclusaoAtualizacao.Create("Atualização realizado com sucesso");
+                this.jsonRetorno = jsonMensagemRetorno.Create("Atualização realizado com sucesso");
             }
             catch (Exception ex)
             {

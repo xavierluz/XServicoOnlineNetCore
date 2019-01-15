@@ -133,7 +133,6 @@ C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNe
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.csproj.CoreCompileInputs.cache
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.RazorAssemblyInfo.cache
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.RazorAssemblyInfo.cs
-C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.AssemblyInfoInputs.cache
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.AssemblyInfo.cs
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.TagHelpers.input.cache
@@ -179,3 +178,7 @@ C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNe
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.csproj.CopyComplete
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.dll
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\XServicoOnline.pdb
+C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Empresa.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Account\CreateFuncao.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Account\EditarFuncao.g.cshtml.cs

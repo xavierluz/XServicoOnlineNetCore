@@ -11,6 +11,7 @@ namespace ServicesInterfaces.cadastro
         String CnpjCpf { get; set; }
         String RazaoSocial { get; set; }
         String NomeFantasia { get; set; }
+        String Email { get; set; }
         String Logradouro { get; set; }
         String Cep { get; set; }
         String Bairro { get; set; }

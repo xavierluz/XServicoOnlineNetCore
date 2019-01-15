@@ -23,6 +23,7 @@
     <Compile Remove="LoginViewModel.cs" />
     <Compile Remove="Migrations\20181214131151_migrationUsuario.cs" />
     <Compile Remove="Migrations\20181214131151_migrationUsuario.Designer.cs" />
+    <Compile Remove="Views\Shared\_Empresa.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -6900,6 +6901,7 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.2" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.1" />
     <PackageReference Include="Npgsql.Json.NET" Version="1.0.0" />
+    <PackageReference Include="SendGrid" Version="9.10.0" />
   </ItemGroup>
 
 

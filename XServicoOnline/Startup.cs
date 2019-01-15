@@ -79,11 +79,12 @@ namespace XServicoOnline
             var dataProtectionProviderType = typeof(DataProtectorTokenProvider<Usuario>);
             var phoneNumberProviderType = typeof(PhoneNumberTokenProvider<Usuario>);
             var emailTokenProviderType = typeof(EmailTokenProvider<Usuario>);
+            var configSendGrid = new AuthMessageSenderOptions { SendGridKey = "kBRN9_YVS6aETZfCUQu4kQ", SendGridUser = "xavierluz"};
             // using Microsoft.AspNetCore.Identity.UI.Services;
 
             services.AddSingleton<IEmailSender, EmailSender>();
-            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
-            //services.Configure<AuthMessageSenderOptions>(Configuration);
+            //services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+            services.Configure<AuthMessageSenderOptions>(Configuration.GetSection("SendGrid"));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(
                     Configuration.GetConnectionString("DefaultConnection")));

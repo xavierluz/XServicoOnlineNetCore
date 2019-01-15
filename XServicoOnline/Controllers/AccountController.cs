@@ -16,6 +16,7 @@ namespace XServicoOnline.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        
         private readonly UserManager<Usuario> _userManager;
         private readonly SignInManager<Usuario> _signInManager;
         private readonly RoleManager<Funcao> _roleManager;
@@ -79,14 +80,14 @@ namespace XServicoOnline.Controllers
             return View();
         }
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Roles = "AdministradorEmpresa")]
         public async Task<IActionResult> Register()
         {
             return await Task.Run(() => View(new Usuario()));
         }
         #region "Métodos Publicos"
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "AdministradorEmpresa")]
         public async Task<IActionResult> Register(Usuario usuarioView)
         {
             usuarioView.RegisterDate = DateTime.Now;

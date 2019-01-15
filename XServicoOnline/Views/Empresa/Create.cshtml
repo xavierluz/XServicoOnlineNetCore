@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Empresa";
+    Layout = "~/Views/Shared/_LayoutInicial.cshtml";
 }
 
 <div class="wrapper ">
@@ -59,6 +60,18 @@
                                         <div class="col-md-1">
                                             <i class="material-icons icon-usuario-margin-top">short_text</i>
                                         </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="Email" class="bmd-label-floating">Email</label>
+                                                <input asp-for="Email" type="email" class="form-control">
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="Cep" class="bmd-label-floating">Cep</label>
@@ -99,7 +112,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                     <partial name="_BotaoSalvarRetornar" />
                                 </form>
                             </div>

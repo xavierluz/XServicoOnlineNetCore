@@ -29,6 +29,9 @@ namespace ServicesInterfaces.cadastro
         public abstract Task<IList<IEmpresa>> GetEmpresas();
         public abstract Task<IList<IEmpresa>> getEmpresasParaMontarGrid(int paginaIndex, string filtro, int registroPorPagina);
         public abstract Task<Int32> GetQuantidade();
+        public abstract Task<string> GetSenhaPadraoDoUsuarioEmpresa();
+        public abstract Task Commit();
+        public abstract Task Rollback();
         #endregion
     }
 }

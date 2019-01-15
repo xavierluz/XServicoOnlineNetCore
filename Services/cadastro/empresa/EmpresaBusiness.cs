@@ -14,10 +14,12 @@ namespace Services.cadastro.empresa
 {
     internal class EmpresaBusiness : EmpresaAbstract
     {
+        private static string SENHA_PADRAO = "@S2rvico0n@line";
         private CadastroUnitOfWork cadastroUnitOfWork = null;
         private EmpresaRepositorio empresaRepositorio = null;
+        private UsuarioRepositorio  usuarioRepositorio = null;
         private CriptografiaFactory criptografiaFactory = null;
-
+        
         private EmpresaBusiness(IsolationLevel isolationLevel) : base(isolationLevel)
         {
             this.cadastroUnitOfWork = CadastroUnitOfWork.GetInstance(base.isolationLevel);
@@ -35,7 +37,6 @@ namespace Services.cadastro.empresa
             {
                 Empresa _empresa = Empresa.GetInstance().GetEmpresa(empresa);
                 await this.empresaRepositorio.AtualizarAsync(_empresa);
-                await cadastroUnitOfWork.SalvarAsync();
                 cadastroUnitOfWork.Commit();
 
                 return _empresa.GetEmpresa();
@@ -48,6 +49,15 @@ namespace Services.cadastro.empresa
             }
             finally
             {
+                cadastroUnitOfWork.Dispose();
+            }
+        }
+
+        public override async Task Commit()
+        {
+            if (cadastroUnitOfWork != null)
+            {
+                await Task.Run(() => cadastroUnitOfWork.Commit());
                 cadastroUnitOfWork.Dispose();
             }
         }
@@ -135,6 +145,12 @@ namespace Services.cadastro.empresa
             return await this.empresaRepositorio.GetCountAsync(query);
         }
 
+        public async override Task<string> GetSenhaPadraoDoUsuarioEmpresa()
+        {
+            IHash hash = Hash256.Getinstance(SENHA_PADRAO);
+            return await Task.Run(() => hash.Create());
+        }
+
         public override async Task<IEmpresa> Incluir(IEmpresa empresa)
         {
             await cadastroUnitOfWork.CreateTransacao();
@@ -147,9 +163,8 @@ namespace Services.cadastro.empresa
                 await criptografiaFactory.CreateHashData();
                 _empresa.Chave = await criptografiaFactory.GetToken();
 
-               await this.empresaRepositorio.AdicionarAsync(_empresa);
+                await this.empresaRepositorio.AdicionarAsync(_empresa);
                 await cadastroUnitOfWork.SalvarAsync();
-                cadastroUnitOfWork.Commit();
 
                 return _empresa.GetEmpresa();
             }
@@ -159,8 +174,14 @@ namespace Services.cadastro.empresa
                 cadastroUnitOfWork.Rollback();
                 throw ex;
             }
-            finally
+            
+        }
+
+        public override async Task Rollback()
+        {
+            if (cadastroUnitOfWork != null)
             {
+                await Task.Run(() => cadastroUnitOfWork.Rollback());
                 cadastroUnitOfWork.Dispose();
             }
         }

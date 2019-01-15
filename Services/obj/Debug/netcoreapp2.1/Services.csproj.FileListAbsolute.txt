@@ -38,3 +38,5 @@ C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNe
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\Services\obj\Debug\netcoreapp2.1\Services.csproj.CopyComplete
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\Services\obj\Debug\netcoreapp2.1\Services.dll
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\Services\obj\Debug\netcoreapp2.1\Services.pdb
+C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\Services\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\Services\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml

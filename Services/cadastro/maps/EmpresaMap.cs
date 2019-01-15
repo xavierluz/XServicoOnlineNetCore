@@ -17,6 +17,7 @@ namespace Services.cadastro.maps
                 b.Property(x => x.Id).ValueGeneratedOnAdd();
                 b.Property(x => x.RazaoSocial).IsRequired().HasMaxLength(200);
                 b.Property(x => x.NomeFantasia).HasMaxLength(200);
+                b.Property(x => x.Email).HasMaxLength(100).IsRequired();
                 b.Property(x => x.Chave).IsRequired().HasMaxLength(1000);
                 b.Property(x => x.CnpjCpf).IsRequired().HasMaxLength(15);
                 b.Property(x => x.Cep).IsRequired().HasMaxLength(10);
@@ -29,8 +30,9 @@ namespace Services.cadastro.maps
                 b.Property(x => x.Ativo).IsRequired().HasColumnType("boolean");
 
                 b.HasIndex(x => x.CnpjCpf).HasName("INDX_EMPRESA_CNPJ").IsUnique();
-                b.HasIndex(x => x.CnpjCpf).HasName("INDX_EMPRESA_RAZAOSOCIAL");
-                b.HasIndex(x => x.CnpjCpf).HasName("INDX_EMPRESA_LOGRADOURO");
+                b.HasIndex(x => x.Email).HasName("INDX_EMPRESA_EMAIL").IsUnique();
+                b.HasIndex(x => x.RazaoSocial).HasName("INDX_EMPRESA_RAZAOSOCIAL");
+                b.HasIndex(x => x.Logradouro).HasName("INDX_EMPRESA_LOGRADOURO");
 
                 //FK - Almoxarifado
                 b.HasMany(e => e.Almoxarifados)

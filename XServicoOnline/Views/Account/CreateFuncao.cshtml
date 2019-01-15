@@ -1,0 +1,59 @@
+﻿@model XServicoOnline.Models.Funcao
+
+@{
+    ViewData["Title"] = "Função";
+    Layout = "~/Views/Shared/_LayoutInicial.cshtml";
+}
+
+<div class="wrapper ">
+
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid alinhamento-form-login-register">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Nova Função</h4>
+                                <p class="card-category">Preencha o(s) campo(s)</p>
+                            </div>
+                            <div class="card-body">
+                                <form asp-action="CreateFuncao" method="post" id="formFuncao" role="form">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="Name" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="Name" type="text" class="form-control">
+                                                <span asp-validation-for="Name" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <partial name="_BotaoSalvarRetornar" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('#buttonSalvar').click(function () {
+                submitAjax('#formFuncao', 'CreateFuncao');
+            });
+
+        });
+    </script>
+}
+}

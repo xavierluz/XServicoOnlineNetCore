@@ -34,7 +34,11 @@ namespace XServicoOnline.ViewModels
         public string Telefone { get; set; }
         public string WhatsApp { get; set; }
         public bool Ativo { get; set; }
+        [Required(ErrorMessage = "Digite o email da empresa")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set ; }
         public ICollection<IAlmoxarifado> IAlmoxarifados { get; set; }
+        
 
         public IEmpresa GetEmpresa()
         {
@@ -51,7 +55,8 @@ namespace XServicoOnline.ViewModels
                 Site = this.Site,
                 Telefone = this.Telefone,
                 WhatsApp = this.WhatsApp,
-                Ativo = this.Ativo
+                Ativo = this.Ativo,
+                Email =  this.Email
             };
 
             return empresa;

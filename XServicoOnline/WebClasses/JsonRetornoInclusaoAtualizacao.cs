@@ -11,13 +11,19 @@ namespace XServicoOnline.WebClasses
         {
             retorno = new Dictionary<string, string>();
         }
-        internal static JsonRetornoInclusaoAtualizacao Create(string valor)
+        internal static JsonRetornoInclusaoAtualizacao Getinstance()
         {
-            var JsonRetorno = new JsonRetornoInclusaoAtualizacao();
-            JsonRetorno.retorno.Add("sucesso", valor);
-            return JsonRetorno;
+            return new JsonRetornoInclusaoAtualizacao();
+        }
+        internal IJsonRetorno Create(string valor)
+        {
+            retorno.Add("sucesso", valor);
+            return this;
         }
         public Dictionary<string, string> retorno { get; private set; }
-
+        internal void LimparMensagem()
+        {
+            retorno.Clear();
+        }
     }
 }

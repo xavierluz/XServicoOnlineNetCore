@@ -16,7 +16,7 @@ namespace Services.cadastro.repositorio
         internal CadastroContexto cadastroContexto = null;
         private AlmoxarifadoRepositorio almoxarifadoRepositorio = null;
         private EmpresaRepositorio empresaRepositorio = null;
-
+        private UsuarioRepositorio usuarioRepositorio = null;
         private CadastroUnitOfWork(IsolationLevel isolationLevel)
         {
             this.isolationLevel = isolationLevel;
@@ -42,6 +42,13 @@ namespace Services.cadastro.repositorio
 
             return this.empresaRepositorio;
         }
+        internal UsuarioRepositorio GetUsuarioRepositorio()
+        {
+            if (this.usuarioRepositorio == null)
+                this.usuarioRepositorio = UsuarioRepositorio.GetInstance(this.cadastroContexto, this.isolationLevel);
+
+            return this.usuarioRepositorio;
+        }
         internal async Task<int> SalvarAsync()
         {
             return await this.cadastroContexto.SaveChangesAsync();
@@ -59,7 +66,7 @@ namespace Services.cadastro.repositorio
         }
         internal void Rollback()
         {
-            if (this.cadastroContexto.Database.CurrentTransaction != null)
+            if (this.cadastroContexto.Database != null && this.cadastroContexto.Database.CurrentTransaction != null)
                 this.cadastroContexto.Database.RollbackTransaction();
         }
 

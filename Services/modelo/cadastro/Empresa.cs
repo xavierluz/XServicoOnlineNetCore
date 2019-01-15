@@ -30,9 +30,11 @@ namespace Services.modelo.cadastro
         public string Telefone { get; set; }
         public string WhatsApp { get; set; }
         public bool Ativo { get; set; }
+        public string Email { get; set; }
         public virtual ICollection<Almoxarifado> Almoxarifados { get; set; }
         [NotMapped]
         public ICollection<IAlmoxarifado> IAlmoxarifados { get; set; }
+       
 
         public Empresa GetEmpresa(IEmpresa empresa)
         {
@@ -50,7 +52,8 @@ namespace Services.modelo.cadastro
                 Site = empresa.Site,
                 Telefone = empresa.Telefone,
                 WhatsApp = empresa.WhatsApp,
-                Ativo = empresa.Ativo
+                Ativo = empresa.Ativo,
+                Email = empresa.Email
             };
         return _empresa;
         }
@@ -70,7 +73,8 @@ namespace Services.modelo.cadastro
             _empresa.Site = this.Site;
             _empresa.Telefone = this.Telefone;
             _empresa.WhatsApp = this.WhatsApp;
-            _empresa.Ativo = this.Ativo; 
+            _empresa.Ativo = this.Ativo;
+            _empresa.Email = this.Email;
             if (this.Almoxarifados != null)
                 _empresa.IAlmoxarifados = this.IAlmoxarifados;
             return _empresa;
