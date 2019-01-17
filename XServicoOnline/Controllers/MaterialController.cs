@@ -46,7 +46,7 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<JsonResult> CreateCategoria(CategoriaViewModel categoriaViewModel)
         {
-            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
             try
             {
 
@@ -90,7 +90,7 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<JsonResult> EditarCategoria(CategoriaViewModel categoriaViewModel)
         {
-            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();
@@ -173,7 +173,7 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateClassificacao(ClassificacaoViewModel classificacaoViewModel)
         {
-            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();
@@ -214,7 +214,7 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<JsonResult> EditarClassificacao(ClassificacaoViewModel classificacaoViewModel)
         {
-            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();
@@ -276,7 +276,7 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMaterial(MaterialViewModel materilaViewModel)
         {
-            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();
@@ -321,7 +321,7 @@ namespace XServicoOnline.Controllers
         [HttpPost]
         public async Task<JsonResult> EditarMaterial(MaterialViewModel  materilaViewModel)
         {
-            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
             try
             {
                 this.isolationLevel = NivelIsolamentoBancoDeDados.GetLerDadosComitado();

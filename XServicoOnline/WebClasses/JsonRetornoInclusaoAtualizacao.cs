@@ -11,7 +11,7 @@ namespace XServicoOnline.WebClasses
         {
             retorno = new Dictionary<string, string>();
         }
-        internal static JsonRetornoInclusaoAtualizacao Getinstance()
+        internal static JsonRetornoInclusaoAtualizacao GetInstance()
         {
             return new JsonRetornoInclusaoAtualizacao();
         }

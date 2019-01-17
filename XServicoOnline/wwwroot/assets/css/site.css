@@ -145,3 +145,23 @@
 #tableEmpresa_wrapper .row .ativo {
     width: 5% !important;
 }
+
+#tableFuncao_wrapper .row {
+    width: 100% !important;
+}
+
+#tableFuncao_length select {
+    margin-left: 20px !important;
+}
+
+#tableFuncao_wrapper .row .name {
+    width: 60% !important;
+}
+
+#tableFuncao_wrapper .row .id {
+    width: 30% !important;
+}
+
+#tableFuncao_wrapper .row .ativo {
+    width: 5% !important;
+}

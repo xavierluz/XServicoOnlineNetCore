@@ -64,7 +64,7 @@ namespace XServicoOnline.Controllers
         [AllowAnonymous]
         public async Task<JsonResult> Create(EmpresaViewModel empresaViewModel)
         {
-            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.Getinstance();
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
             try
             {
                 this.isolationLevel = IsolationLevel.RepeatableRead;
@@ -126,7 +126,7 @@ namespace XServicoOnline.Controllers
                     foreach (var error in resultado.Errors)
                     {
                         jsonMensagemRetorno.LimparMensagem();
-                        jsonMensagemRetorno.Create(error.Description);
+                        this.jsonRetorno = jsonMensagemRetorno.Create(error.Description);
                     }
    
             }

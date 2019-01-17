@@ -13,6 +13,7 @@ namespace Services.bases
         private PostgreSqlFactory()
         {
             this.conncetion = new NpgsqlConnection(GetConnectionString());
+           
         }
 
         public DbConnection GetConnection()
@@ -24,9 +25,10 @@ namespace Services.bases
         {
             return new PostgreSqlFactory();
         }
+
         private string GetConnectionString()
         {
-            return "Server=localhost;Port=5432;Database=OnlineETServico;User Id=postgres;Password=lugo2012;";
+            return "Server=localhost;Port=5432;Database=OnlineETServico;User Id=postgres;Password=lugo2012;Enlist=true;";
         }
     }
 }
