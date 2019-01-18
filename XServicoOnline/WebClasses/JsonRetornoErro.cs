@@ -7,15 +7,14 @@ namespace XServicoOnline.WebClasses
 {
     public class JsonRetornoErro : IJsonRetorno
     {
-        private JsonRetornoErro()
+        public JsonRetornoErro()
         {
             retorno = new Dictionary<string, string>();
         }
-        internal static JsonRetornoErro Create(string valor)
+        internal JsonRetornoErro Add(string valor)
         {
-            var JsonRetorno = new JsonRetornoErro();
-            JsonRetorno.retorno.Add("erro", valor);
-            return JsonRetorno;
+            retorno.Add("erro", valor);
+            return this;
         }
         public Dictionary<string, string> retorno
         {

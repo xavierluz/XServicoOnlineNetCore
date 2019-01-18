@@ -117,22 +117,23 @@ namespace XServicoOnline.Controllers
                         catch (Exception ex)
                         {
                             jsonMensagemRetorno.LimparMensagem();
-                            jsonMensagemRetorno.Create(ex.Message);
+                            jsonMensagemRetorno.Add(ex.Message);
                         }
                         await _signInManager.SignInAsync(usuario, isPersistent: false);
 
                     }
-                    this.jsonRetorno = jsonMensagemRetorno.Create("Inclusão realizado com sucesso");
+                    this.jsonRetorno = jsonMensagemRetorno.Add("Inclusão realizado com sucesso");
                     foreach (var error in resultado.Errors)
                     {
                         jsonMensagemRetorno.LimparMensagem();
-                        this.jsonRetorno = jsonMensagemRetorno.Create(error.Description);
+                        this.jsonRetorno = jsonMensagemRetorno.Add(error.Description);
                     }
    
             }
             catch (Exception ex)
             {
-                this.jsonRetorno = JsonRetornoErro.Create(ex.Message);
+                JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                this.jsonRetorno = jsonRetornoErro.Add(ex.Message);
                 await this.empresaAbstract.Rollback();
             }
             finally

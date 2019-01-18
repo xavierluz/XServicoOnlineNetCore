@@ -15,7 +15,7 @@ namespace XServicoOnline.WebClasses
         {
             return new JsonRetornoInclusaoAtualizacao();
         }
-        internal IJsonRetorno Create(string valor)
+        internal JsonRetornoInclusaoAtualizacao Add(string valor)
         {
             retorno.Add("sucesso", valor);
             return this;

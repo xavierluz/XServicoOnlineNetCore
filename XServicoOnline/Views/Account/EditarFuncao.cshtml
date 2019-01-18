@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Função";
-    Layout = "~/Views/Shared/_LayoutInicial.cshtml";
 }
 
 <div class="wrapper ">
@@ -20,6 +19,7 @@
                             </div>
                             <div class="card-body">
                                 <form asp-action="EditarFuncao" method="post" id="formFuncao" role="form">
+                                    <input type="hidden" asp-for="Id" />
                                     <div class="row">
                                         <div class="col-md-1">
                                             <i class="material-icons icon-usuario-margin-top">short_text</i>

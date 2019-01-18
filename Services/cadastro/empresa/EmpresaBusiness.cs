@@ -147,8 +147,7 @@ namespace Services.cadastro.empresa
 
         public async override Task<string> GetSenhaPadraoDoUsuarioEmpresa()
         {
-            IHash hash = Hash256.Getinstance(SENHA_PADRAO);
-            return await Task.Run(() => hash.Create());
+            return await Task.Run(() => SENHA_PADRAO);
         }
 
         public override async Task<IEmpresa> Incluir(IEmpresa empresa)

@@ -165,3 +165,23 @@
 #tableFuncao_wrapper .row .ativo {
     width: 5% !important;
 }
+
+#tableFuncaoReivindicacao_wrapper .row {
+    width: 100% !important;
+}
+
+#tableFuncaoReivindicacao_length select {
+    margin-left: 20px !important;
+}
+
+#tableFuncaoReivindicacao_wrapper .row .reivindicacao {
+    width: 25% !important;
+}
+
+#tableFuncaoReivindicacao_wrapper .row .valor {
+    width: 50% !important;
+}
+
+#tableFuncaoReivindicacao_wrapper .row .ativo {
+    width: 5% !important;
+}

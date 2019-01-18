@@ -20,7 +20,7 @@
         //});
     };
     var editarClickHandler = function (funcao) {
-        window.location = './EditarFuncao?funcaoId=' + funcao.id; 
+        window.location = './EditarFuncao?funcaoId=' + funcao.id;
     };
     var detalheClickHandler = function (funcao) {
         window.location = './DetalheFuncao?funcaoId=' + funcao.id;
@@ -71,6 +71,8 @@
             "rowCallback": function (row, data, Object, index) {
                 $(actionEditar, row).bind('click', () => {
                     editarClickHandler(data);
+                });
+                $(actionDetalhes, row).bind('click', () => {
                     detalheClickHandler(data);
                 });
                 return row;

@@ -182,7 +182,7 @@ namespace XServicoOnline.Controllers
             if (!ModelState.IsValid)
             {
                 jsonMensagemRetorno.LimparMensagem();
-                jsonMensagemRetorno.Create(ModelState[funcaoView.Name].Errors.ToString());
+                jsonMensagemRetorno.Add(ModelState[funcaoView.Name].Errors.ToString());
                 this.JsonResultado = Json(jsonRetorno, jsonSerializerSettings);
 
                 return this.JsonResultado;
@@ -194,17 +194,19 @@ namespace XServicoOnline.Controllers
                 if (!role)
                 {
                     await _roleManager.CreateAsync(funcaoView);
-                    this.jsonRetorno = jsonMensagemRetorno.Create("Inclusão realizado com sucesso");
+                    this.jsonRetorno = jsonMensagemRetorno.Add("Inclusão realizado com sucesso");
                 }
                 else
                 {
+                    JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
                     jsonMensagemRetorno.LimparMensagem();
-                    this.jsonRetorno = JsonRetornoErro.Create("Função já está cadastrada!");
+                    this.jsonRetorno = jsonRetornoErro.Add("Função já está cadastrada!");
                 }
             }catch(Exception ex)
             {
+                JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
                 jsonMensagemRetorno.LimparMensagem();
-                this.jsonRetorno = JsonRetornoErro.Create(ex.Message);
+                this.jsonRetorno = jsonRetornoErro.Add(ex.Message);
             }
             finally
             {
@@ -217,7 +219,7 @@ namespace XServicoOnline.Controllers
         [HttpGet]
         public async Task<IActionResult> EditarFuncao(string funcaoId)
         {
-            var funcao = await _roleManager.FindByIdAsync(funcaoId);
+            Funcao funcao = await _roleManager.FindByIdAsync(funcaoId);
             return View(funcao);
         }
         [HttpPost]
@@ -226,28 +228,123 @@ namespace XServicoOnline.Controllers
             var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
             try
             {
-                var resultado = await _roleManager.SetRoleNameAsync(funcaoView, funcaoView.Name);
-                if (resultado.Succeeded)
+                var funcao = await _roleManager.FindByIdAsync(funcaoView.Id);
+                if (funcao != null)
                 {
-                    this.jsonRetorno = jsonMensagemRetorno.Create("Alteração realizado com sucesso");
+                    funcao.Name = funcaoView.Name;
+                    funcao.NormalizedName = funcaoView.Name;
+
+                    await _roleManager.UpdateAsync(funcao);
+                    this.jsonRetorno = jsonMensagemRetorno.Add("Alteração realizado com sucesso");
                 }
                 else
                 {
-                    foreach (var erro in resultado.Errors)
-                    {
-                        jsonMensagemRetorno.LimparMensagem();
-                        this.jsonRetorno = jsonMensagemRetorno.Create(erro.Description);
-                    }
+                    JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                    jsonMensagemRetorno.LimparMensagem();
+                    this.jsonRetorno = jsonRetornoErro.Add("Função não encontrada ou deletada");
                 }
                 
             }catch(Exception ex)
             {
+                JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
                 jsonMensagemRetorno.LimparMensagem();
-                this.jsonRetorno = JsonRetornoErro.Create(ex.Message);
+                this.jsonRetorno = jsonRetornoErro.Add(ex.Message);
             }
             finally
             {
                 this.JsonResultado = Json(jsonRetorno, jsonSerializerSettings);
+            }
+            return this.JsonResultado;
+        }
+        #endregion
+
+        #region "Função Reinvidicação"
+        [Authorize(Roles = "AdministradorEmpresa")]
+        public async Task<IActionResult> FuncaoReivindicacaoIndex()
+        {
+            return await Task.Run(() => View());
+
+        }
+        [HttpPost]
+        [Authorize(Roles = "AdministradorEmpresa")]
+        public async Task<JsonResult> GetFuncoesReivindicacoes()
+        {
+            JsonResult jsonResultado = null;
+            string search = Request.Form["search[value]"].ToString();
+            string draw = Request.Form["draw"].ToString();
+            string order = Request.Form["order[0][column]"].ToString();
+            string orderDir = Request.Form["order[0][dir]"].ToString();
+            int startRec = Convert.ToInt32(Request.Form["start"].ToString());
+            int pageSize = Convert.ToInt32(Request.Form["length"].ToString());
+            this.isolationLevel = IsolationLevel.ReadUncommitted;
+
+            FuncaoReivindicacao funcaoReivindicacao = new FuncaoReivindicacao();
+            List<FuncaoReivindicacao> funcaoReivindicacoes = await funcaoReivindicacao.GetFuncaoReivindicacoesParaMontarGrid(this.isolationLevel, startRec, search, pageSize);
+            List<FuncaoReivindicacaoTableViewModel> funcaoReivindicacaoTableViewModels = funcaoReivindicacoes.ConvertAll(new Converter<FuncaoReivindicacao, FuncaoReivindicacaoTableViewModel>(FuncaoReivindicacaoTableViewModel.GetInstance));
+            var retorno = FuncaoReivindicacaoTableViewModel.Ordenar(order, orderDir, funcaoReivindicacaoTableViewModels);
+
+            int totalRegistros = funcaoReivindicacao.totalRegistrosRetorno;
+
+            jsonResultado = Json(new { draw = Convert.ToInt32(draw), recordsTotal = totalRegistros, recordsFiltered = totalRegistros, data = retorno });
+            return jsonResultado;
+        }
+        [HttpGet]
+        public async Task<IActionResult> CreateFuncaoReivindicacao(string funcaoId)
+        {
+            FuncaoReivindicacao funcaoReivindicacao = new FuncaoReivindicacao();
+            funcaoReivindicacao.RoleId = funcaoId;
+            return await Task.Run(() => View(funcaoReivindicacao));
+        }
+        [HttpPost]
+        public async Task<JsonResult> CreateFuncaoReivindicacao(FuncaoReivindicacao funcaoReivindicacaoView)
+        {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
+            if (!ModelState.IsValid)
+            {
+                jsonMensagemRetorno.LimparMensagem();
+                JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                foreach (var key in ModelState.Keys)
+                {
+                    if (ModelState[key].Errors.Count > 0)
+                        this.jsonRetorno = jsonRetornoErro.Add(ModelState[key].Errors[0].ErrorMessage);
+                }
+               
+                this.JsonResultado = Json(jsonRetorno, jsonSerializerSettings);
+
+                return this.JsonResultado;
+            }
+
+            try
+            {
+                Funcao funcao = await _roleManager.FindByIdAsync(funcaoReivindicacaoView.RoleId);
+
+                var resultado = await _roleManager.AddClaimAsync(funcao, funcaoReivindicacaoView.ToClaim());
+                if (resultado.Succeeded)
+                {
+                    this.jsonRetorno = jsonMensagemRetorno.Add("Inclusão realizado com sucesso");
+                }
+                else
+                {
+                    jsonMensagemRetorno.LimparMensagem();
+                    JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                    foreach (var erro in resultado.Errors)
+                    {
+                        this.jsonRetorno = jsonRetornoErro.Add(erro.Description);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                jsonMensagemRetorno.LimparMensagem();
+                JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                this.jsonRetorno = jsonRetornoErro.Add(ex.Message);
+            }
+            finally
+            {
+                _roleManager.Dispose();
+                this.JsonResultado = Json(jsonRetorno, jsonSerializerSettings);
+
             }
             return this.JsonResultado;
         }

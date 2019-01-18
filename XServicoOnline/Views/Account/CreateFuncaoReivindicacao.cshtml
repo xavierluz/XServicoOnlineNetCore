@@ -1,0 +1,68 @@
+﻿@model XServicoOnline.Models.FuncaoReivindicacao
+
+@{
+    ViewData["Title"] = "Reivindicação da função";
+}
+
+<div class="wrapper ">
+
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid alinhamento-form-login-register">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Nova Reivindicação</h4>
+                                <p class="card-category">Preencha o(s) campo(s)</p>
+                            </div>
+                            <div class="card-body">
+                                <form asp-action="CreateFuncaoReivindicacao" method="post" id="formFuncaoReivindicacao" role="form">
+                                    <input type="hidden" asp-for="RoleId" />
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="ClaimType" class="bmd-label-floating">Reivindicação</label>
+                                                <input asp-for="ClaimType" type="text" class="form-control">
+                                                <span asp-validation-for="ClaimType" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">short_text</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="ClaimValue" class="bmd-label-floating">Valor(Conteúdo)</label>
+                                                <input asp-for="ClaimValue" type="text" class="form-control">
+                                                <span asp-validation-for="ClaimValue" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <partial name="_BotaoSalvarRetornar" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('#buttonSalvar').click(function () {
+                submitAjax('#formFuncaoReivindicacao', 'CreateFuncaoReivindicacao');
+            });
+
+        });
+    </script>
+}
+}
