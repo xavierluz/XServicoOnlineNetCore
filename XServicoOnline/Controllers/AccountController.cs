@@ -348,6 +348,61 @@ namespace XServicoOnline.Controllers
             }
             return this.JsonResultado;
         }
+   
+        [HttpPost]
+        public async Task<JsonResult> RemoverFuncaoReivindicacao(string funcaoId, int funcaoReivindicacaoId)
+        {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
+            if (!ModelState.IsValid)
+            {
+                jsonMensagemRetorno.LimparMensagem();
+                JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                foreach (var key in ModelState.Keys)
+                {
+                    if (ModelState[key].Errors.Count > 0)
+                        this.jsonRetorno = jsonRetornoErro.Add(ModelState[key].Errors[0].ErrorMessage);
+                }
+
+                this.JsonResultado = Json(jsonRetorno, jsonSerializerSettings);
+
+                return this.JsonResultado;
+            }
+
+            try
+            {
+                Funcao funcao = await _roleManager.FindByIdAsync(funcaoId);
+                FuncaoReivindicacao funcaoReivindicacao = new FuncaoReivindicacao();
+                var _funcaoReivindicacao = await funcaoReivindicacao.GetFuncaoReivindicacaoAsync(funcaoReivindicacaoId);
+                var resultado = await _roleManager.RemoveClaimAsync(funcao, _funcaoReivindicacao.ToClaim());
+                if (resultado.Succeeded)
+                {
+                    this.jsonRetorno = jsonMensagemRetorno.Add("Exclusão realizado com sucesso");
+                }
+                else
+                {
+                    jsonMensagemRetorno.LimparMensagem();
+                    JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                    foreach (var erro in resultado.Errors)
+                    {
+                        this.jsonRetorno = jsonRetornoErro.Add(erro.Description);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                jsonMensagemRetorno.LimparMensagem();
+                JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                this.jsonRetorno = jsonRetornoErro.Add(ex.Message);
+            }
+            finally
+            {
+                _roleManager.Dispose();
+                this.JsonResultado = Json(jsonRetorno, jsonSerializerSettings);
+
+            }
+            return this.JsonResultado;
+        }
         #endregion
     }
 }

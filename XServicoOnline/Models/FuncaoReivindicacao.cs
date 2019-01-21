@@ -96,7 +96,13 @@ namespace XServicoOnline.Models
             }
 
         }
-
+        public async Task<FuncaoReivindicacao> GetFuncaoReivindicacaoAsync(int funcaoReivindicacaoId)
+        {
+            IQueryable<FuncaoReivindicacao> query = (from q in this.applicationDbContext.Set<FuncaoReivindicacao>()
+                                                     where q.Id == funcaoReivindicacaoId
+                                                     select q).AsNoTracking();
+            return await query.FirstOrDefaultAsync();
+        }
         public override Claim ToClaim()
         {
             return base.ToClaim();

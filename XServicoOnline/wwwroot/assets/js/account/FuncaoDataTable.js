@@ -11,7 +11,7 @@
     };
     var criarAction = function () {
         $(actionDetalhes).click(function () {
-            let id = $(this).parent().parent().parent().parent().find(actionId).text()
+            let id = $(this).parent().parent().parent().parent().find(actionId).text();
             window.location = './Detalhes?id=' + id;
         });
         //$(actionEditar).click(function () {
@@ -23,7 +23,7 @@
         window.location = './EditarFuncao?funcaoId=' + funcao.id;
     };
     var detalheClickHandler = function (funcao) {
-        window.location = './DetalheFuncao?funcaoId=' + funcao.id;
+        window.location = './CreateFuncaoReivindicacao?funcaoId=' + funcao.id;
     };
     var criarTableFuncao = function () {
 

@@ -3,6 +3,7 @@
     let tableName = '#tableFuncaoReivindicacao';
     let actionDetalhes = '.action-detalhe';
     let actionEditar = '.action-editar';
+    let actionRemover = '.action-remover';
     let actionId = '.funcao-reivindicacao-id';
     let actionFuncaoId = '.funcao-id';
     FuncaoReivindicacaoDataTable.prototype.Load = function () {
@@ -19,8 +20,48 @@
         //    window.location = './Editar?id=' + id;
         //});
     };
-    var editarClickHandler = function (funcaoReivindicacao) {
-        window.location = './EditarFuncaoReivindicacao?funcaoId=' + funcaoReivindicacao.id;
+    var removerClickHandler = function (row,funcaoReivindicacao) {
+        var builderHtml = [];
+        builderHtml.push('<div class="modal" tabindex="-1" role="dialog">');
+        builderHtml.push('<div class="modal-dialog" role="document">');
+        builderHtml.push('        <div class="modal-content">');
+        builderHtml.push('            <div class="modal-header">');
+        builderHtml.push('                <h5 class="modal-title">Modal title</h5>');
+        builderHtml.push('                <button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+        builderHtml.push('                    <span aria-hidden="true">&times;</span>');
+        builderHtml.push('                </button>');
+        builderHtml.push('            </div>');
+        builderHtml.push('            <div class="modal-body">');
+        builderHtml.push('                <p>Modal body text goes here.</p>');
+        builderHtml.push('            </div>');
+        builderHtml.push('            <div class="modal-footer">');
+        builderHtml.push('                <button type="button" id="deletarReivindicacao" class="btn btn-primary pull-right">Excluir</button>');
+        builderHtml.push('                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>');
+        builderHtml.push('            </div>');
+        builderHtml.push('        </div>');
+        builderHtml.push('    </div>');
+        builderHtml.push('</div>');
+        $('.body-reivindicacao').append(builderHtml.join(""));
+        $('.modal').modal();
+        builderHtml = [];
+        $('#deletarReivindicacao').click(function () {
+            $('.modal').modal('toggle');
+            //window.location = './RemoverFuncaoReivindicacao?funcaoId=' + funcaoReivindicacao.funcaoId + '&funcaoReivindicacaoId=' + funcaoReivindicacao.id;
+            $.post('RemoverFuncaoReivindicacao', { funcaoId: funcaoReivindicacao.funcaoId, funcaoReivindicacaoId: funcaoReivindicacao.id }, function (data) {
+                if (data.retorno.erro === undefined || data.retorno.erro === null) {
+                    md.notificacaoSucesso('top', 'right', data.retorno.sucesso);
+                    removeTr(row);
+                } else {
+                    md.notificacaoErro('top', 'right', data.retorno.erro);
+                }
+               
+            });
+        });
+       
+    };
+    var removeTr = function (item) {
+        var tr = $(item).closest('tr');
+        tr.remove();
     };
     var detalheClickHandler = function (funcaoReivindicacao) {
         window.location = './CreateFuncaoReivindicacao?funcaoId=' + funcaoReivindicacao.funcaoId;
@@ -59,7 +100,7 @@
                 { "data": "valor" },
                 { "data": "id" },
                 { "data": "funcaoId" },
-                { "defaultContent": '<div class="form-group default-content-data-table" style="margin-left: -1%;"><a class="action-editar" title="Editar"><i class="material-icons editarclass" data-toggle="tooltip" data-placement="top" title="Tooltip on top">edit</i><span class="sr-only aria-hidden="true"">Editar</span></a><a class="action-detalhe" title="Detalhes"><i class="material-icons detalheclass">details</i><span class="sr-only" aria-hidden="true">Detalhes</span></a></div>' }
+                { "defaultContent": '<div class="form-group default-content-data-table" style="margin-left: -1%;"><a class="action-remover" title="Excluir"><i class="material-icons editarclass" data-toggle="tooltip" data-placement="top" title="Excluir a reivindicação">delete_forever</i><span class="sr-only aria-hidden="true"">Excluir</span></a></div>' }
             ],
             "initComplete": function () {
 
@@ -71,12 +112,10 @@
                 console.log(oSettings);
             },
             "rowCallback": function (row, data, Object, index) {
-                $(actionEditar, row).bind('click', () => {
-                    editarClickHandler(data);
+                $(actionRemover, row).bind('click', () => {
+                    removerClickHandler(row,data);
                 });
-                $(actionDetalhes, row).bind('click', () => {
-                    detalheClickHandler(data);
-                });
+               
                 return row;
             },
             "oLanguage": {
