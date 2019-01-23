@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using XServicoOnline.Segurity.Account;
 using XServicoOnline.Models;
 using Microsoft.Extensions.Logging;
+using Services.bases;
 
 namespace XServicoOnline
 {
@@ -86,8 +87,7 @@ namespace XServicoOnline
             //services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.Configure<AuthMessageSenderOptions>(Configuration.GetSection("SendGrid"));
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(PostgreSqlFactory.GetInstance().GetConnection()));
              services.AddIdentity<Usuario,Funcao>()
             //services.AddDefaultIdentity<Usuario>().AddRoles<Funcao>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

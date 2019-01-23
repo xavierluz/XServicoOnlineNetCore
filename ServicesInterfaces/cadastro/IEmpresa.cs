@@ -8,6 +8,7 @@ namespace ServicesInterfaces.cadastro
     {
         Guid Id { get; set; }
         String Chave { get; set; }
+        String VetorInicializacao { get; set; }
         String CnpjCpf { get; set; }
         String RazaoSocial { get; set; }
         String NomeFantasia { get; set; }

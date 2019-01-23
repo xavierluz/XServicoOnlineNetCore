@@ -88,9 +88,10 @@ namespace XServicoOnline.Controllers
                         await this._userManager.ConfirmEmailAsync(usuario, token);
                         await this._userManager.SetLockoutEnabledAsync(usuario, false);
                         var role = await _roleManager.RoleExistsAsync("AdministradorEmpresa");
-                        Funcao funcao = new Funcao();
+                        Funcao funcao = null;
                         if (!role)
                         {
+                            funcao = new Funcao();
                             funcao.Name = "AdministradorEmpresa";
                             var resultadoRole = await _roleManager.CreateAsync(funcao);
                         }

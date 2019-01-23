@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using XServicoOnline.Models;
 using XServicoOnline.ViewModels;
 using XServicoOnline.WebClasses;
+using Microsoft.EntityFrameworkCore;
 
 namespace XServicoOnline.Controllers
 {
@@ -88,13 +89,44 @@ namespace XServicoOnline.Controllers
             // If we got this far, something failed, redisplay form
             return View();
         }
+        #region "Usuarios"
+        [Authorize(Roles = "AdministradorEmpresa")]
+        public async Task<IActionResult> UsuarioIndex()
+        {
+            return await Task.Run(() => View());
+
+        }
+        [HttpPost]
+        [Authorize(Roles = "AdministradorEmpresa")]
+        public async Task<JsonResult> GetUsuarios()
+        {
+            JsonResult jsonResultado = null;
+            string search = Request.Form["search[value]"].ToString();
+            string draw = Request.Form["draw"].ToString();
+            string order = Request.Form["order[0][column]"].ToString();
+            string orderDir = Request.Form["order[0][dir]"].ToString();
+            int startRec = Convert.ToInt32(Request.Form["start"].ToString());
+            int pageSize = Convert.ToInt32(Request.Form["length"].ToString());
+            this.isolationLevel = IsolationLevel.ReadUncommitted;
+
+            Usuario usuario = new Usuario();
+            List<Usuario> usuarios = await usuario.GetUsuariosParaMontarGrid(this.isolationLevel, startRec, search, pageSize);
+            List<UsuarioTableViewModel> usuarioTableViewModels = usuarios.ConvertAll(new Converter<Usuario, UsuarioTableViewModel>(UsuarioTableViewModel.GetInstance));
+
+            var retorno = usuarioTableViewModels.Ordenar(order, orderDir);
+
+            int totalRegistros = usuario.totalRegistrosRetorno;
+
+            jsonResultado = Json(new { draw = Convert.ToInt32(draw), recordsTotal = totalRegistros, recordsFiltered = totalRegistros, data = retorno });
+            return jsonResultado;
+        }
         [HttpGet]
         [Authorize(Roles = "AdministradorEmpresa")]
         public async Task<IActionResult> Register()
         {
             return await Task.Run(() => View(new Usuario()));
         }
-        #region "Métodos Publicos"
+        
         [HttpPost]
         [Authorize(Roles = "AdministradorEmpresa")]
         public async Task<IActionResult> Register(Usuario usuarioView)
@@ -136,8 +168,94 @@ namespace XServicoOnline.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> EditarUsuario(string usuarioId)
+        {
+            Usuario usuario = await _userManager.FindByIdAsync(usuarioId);
+            return View(usuario);
+        }
+        [HttpPost]
+        public async Task<JsonResult> EditarUsuario(Usuario usuarioView )
+        {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
+            try
+            {
+                var usuario = await _userManager.FindByIdAsync(usuarioView.Id);
+                if (usuario != null)
+                {
+                    usuario.Nome = usuario.Nome;
+                    usuario.PhoneNumber = usuario.PhoneNumber;
 
+                    await _userManager.UpdateAsync(usuario);
+                    this.jsonRetorno = jsonMensagemRetorno.Add("Alteração realizado com sucesso");
+                }
+                else
+                {
+                    JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                    jsonMensagemRetorno.LimparMensagem();
+                    this.jsonRetorno = jsonRetornoErro.Add("Usuário não encontrado ou deletado");
+                }
 
+            }
+            catch (Exception ex)
+            {
+                JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                jsonMensagemRetorno.LimparMensagem();
+                this.jsonRetorno = jsonRetornoErro.Add(ex.Message);
+            }
+            finally
+            {
+                this.JsonResultado = Json(jsonRetorno, jsonSerializerSettings);
+            }
+            return this.JsonResultado;
+        }
+        [HttpGet]
+        public async Task<IActionResult> GerenciarUsuario(string usuarioId)
+        {
+            Usuario usuario = await _userManager.FindByIdAsync(usuarioId);
+            UsuarioFuncaoViewModel usuarioFuncaoViewModel = new UsuarioFuncaoViewModel();
+            usuarioFuncaoViewModel.Usuario = usuario;
+            List<Funcao> funcoes = await this._roleManager.Roles.ToListAsync();
+            usuarioFuncaoViewModel.Funcoes = funcoes;
+
+            return View(usuarioFuncaoViewModel);
+        }
+        [HttpPost]
+        public async Task<JsonResult> GerenciarUsuario(UsuarioFuncaoViewModel usuarioFuncaoViewModel)
+        {
+            var jsonMensagemRetorno = JsonRetornoInclusaoAtualizacao.GetInstance();
+            try
+            {
+                if (usuarioFuncaoViewModel.Usuario != null)
+                {
+                    if (usuarioFuncaoViewModel.Usuario != null)
+                    {
+                        foreach (var funcao in usuarioFuncaoViewModel.FuncoesSelecionadas)
+                            await this._userManager.AddToRoleAsync(usuarioFuncaoViewModel.Usuario, funcao.Name);
+                        
+                        this.jsonRetorno = jsonMensagemRetorno.Add("Alteração realizado com sucesso");
+                    }
+                }
+                else
+                {
+                    JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                    jsonMensagemRetorno.LimparMensagem();
+                    this.jsonRetorno = jsonRetornoErro.Add("Usuário não encontrado ou deletado");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                JsonRetornoErro jsonRetornoErro = new JsonRetornoErro();
+                jsonMensagemRetorno.LimparMensagem();
+                this.jsonRetorno = jsonRetornoErro.Add(ex.Message);
+            }
+            finally
+            {
+                this.JsonResultado = Json(jsonRetorno, jsonSerializerSettings);
+            }
+            return this.JsonResultado;
+        }
         #endregion
 
         #region "Funçoes(role)"

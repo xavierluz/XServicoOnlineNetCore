@@ -15,7 +15,7 @@ namespace Services.cadastro.repositorio
     internal class UsuarioRepositorio
     {
         private IQueryable<Usuario> query;
-        private CadastroContexto cadastroContexto = null;
+        internal CadastroContexto cadastroContexto = null;
         private IsolationLevel isolationLevel = IsolationLevel.ReadCommitted;
         private UsuarioRepositorio(CadastroContexto cadastroContexto, IsolationLevel isolationLevel)
         {

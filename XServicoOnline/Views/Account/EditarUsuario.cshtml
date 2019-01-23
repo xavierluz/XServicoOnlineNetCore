@@ -1,0 +1,105 @@
+﻿@model XServicoOnline.Models.Usuario
+
+@{
+    ViewData["Title"] = "Editar Usuário";
+    Layout = "~/Views/Shared/_LayoutInicial.cshtml";
+}
+
+<div class="wrapper ">
+
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid alinhamento-form-login-register">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Editar Usuário</h4>
+                                <p class="card-category">Preencha os campos</p>
+                            </div>
+                            <div class="card-body">
+                                <form asp-action="EditarUsuario" method="post" id="formEditar" role="form">
+                                    <input type="hidden" asp-for="Id" />
+                                    <input type="hidden" asp-for="Email" />
+                                    <input type="hidden" asp-for="UserName" />
+                                    <input type="hidden" asp-for="EmpresaId" />
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">person</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="Nome" class="bmd-label-floating">Nome</label>
+                                                <input asp-for="Nome" type="text" class="form-control">
+                                                <span asp-validation-for="Nome" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">phone</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Telefone</label>
+                                                <input asp-for="PhoneNumber" type="tel" class="form-control telefone-formato">
+                                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.login-box -->
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(function () {
+
+            // Bind no input e propertychange para pegar ctrl-v
+            // e outras formas de input
+            $(".telefone-formato").bind('input propertychange', function () {
+                // pego o valor do telefone
+                var texto = $(this).val();
+                // Tiro tudo que não é numero
+                texto = texto.replace(/[^\d]/g, '');
+                // Se tiver alguma coisa
+                if (texto.length > 0) {
+                    // Ponho o primeiro parenteses do DDD
+                    texto = "(" + texto;
+
+                    if (texto.length > 3) {
+                        // Fecha o parenteses do DDD
+                        texto = [texto.slice(0, 3), ") ", texto.slice(3)].join('');
+                    }
+                    if (texto.length > 12) {
+                        // Se for 13 digitos ( DDD + 9 digitos) ponhe o traço no quinto digito
+                        if (texto.length > 13)
+                            texto = [texto.slice(0, 10), "-", texto.slice(10)].join('');
+                        else
+                            // Se for 12 digitos ( DDD + 8 digitos) ponhe o traço no quarto digito
+                            texto = [texto.slice(0, 9), "-", texto.slice(9)].join('');
+                    }
+                    // Não adianta digitar mais digitos!
+                    if (texto.length > 15)
+                        texto = texto.substr(0, 15);
+                }
+                // Retorna o texto
+                $(this).val(texto);
+            });
+        });
+    </script>
+}

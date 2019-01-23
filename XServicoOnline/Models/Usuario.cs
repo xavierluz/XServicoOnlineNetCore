@@ -1,18 +1,47 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Services.bases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Common;
+using System.Linq;
 using System.Security.Policy;
 using System.Threading.Tasks;
+using System.Transactions;
+using XServicoOnline.Data;
 using XServicoOnline.Validacao.Telefone;
 
 namespace XServicoOnline.Models
 {
     public class Usuario: IdentityUser<string>
     {
-      
+        public Usuario()
+        {
+            this.dbConnection = PostgreSqlFactory.GetInstance().GetConnection();
+            this.optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            this.optionsBuilder.UseNpgsql(this.dbConnection);
+            this.applicationDbContext = new ApplicationDbContext(this.optionsBuilder.Options);
+        }
+        #region "Atributos publicos"
+        [NotMapped]
+        public int totalRegistrosRetorno { get; protected set; }
+        [NotMapped]
+        public int registroIndex { get; protected set; }
+        [NotMapped]
+        public int totalRegistroPorPagina { get; protected set; }
+        [NotMapped]
+        public string filtro { get; protected set; }
+        [NotMapped]
+        private ApplicationDbContext applicationDbContext = null;
+        [NotMapped]
+        private DbContextOptionsBuilder<ApplicationDbContext> optionsBuilder;
+        [NotMapped]
+        private DbConnection dbConnection = null;
+        #endregion
+
         #region "Atributos de manipulação"
         [TempData]
         [NotMapped]
@@ -30,6 +59,7 @@ namespace XServicoOnline.Models
         #endregion
         #region "Atributos das entidades personalizados"
         public override string Id { get => base.Id; set => base.Id = value; }
+        [Required(ErrorMessage = "Empresa é obrigatório!")]
         public Guid EmpresaId { get; set; }
         [Display(Name ="Usuário")]
         [Required(ErrorMessage ="Usuário é obrigatório!")]
@@ -70,6 +100,52 @@ namespace XServicoOnline.Models
         public virtual ICollection<UsuarioToken> UsuarioToken { get; set; }
         public virtual ICollection<UsuarioFuncao> UsuarioFuncao { get; set; }
         #endregion
-       
+        #region "Métodos públicos"
+        public async Task<List<Usuario>> GetUsuariosParaMontarGrid(IsolationLevel isolationLevel, int paginaIndex, string filtro, int registroPorPagina)
+        {
+
+            using (var scope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions { IsolationLevel = isolationLevel }, TransactionScopeAsyncFlowOption.Enabled))
+            {
+                try
+                {
+                    IQueryable<Usuario> query;
+                    if (paginaIndex < 0)
+                        paginaIndex = 0;
+                    if (!string.IsNullOrEmpty(filtro) && !string.IsNullOrWhiteSpace(filtro))
+                    {
+                        query = (from q in this.applicationDbContext.Set<Usuario>()
+                                 where q.Nome.ToUpper().Contains(filtro.ToUpper())
+                                   && q.UserName.ToUpper().Contains(filtro.ToUpper())
+                                   && q.Email.ToUpper().Contains(filtro.ToUpper())
+                                 select q);
+                        this.totalRegistrosRetorno = await query.AsNoTracking().CountAsync();
+
+                        query = query.Skip(paginaIndex).Take(registroPorPagina);
+                    }
+                    else
+                    {
+                        query = (from q in this.applicationDbContext.Set<Usuario>()
+                                 select q);
+                        this.totalRegistrosRetorno = await query.AsNoTracking().CountAsync();
+                        query = query.Skip(paginaIndex).Take(registroPorPagina);
+                    }
+                    List<Usuario> usuarios = await query.AsNoTracking().ToListAsync();
+                    scope.Complete();
+                    return usuarios;
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+                finally
+                {
+                    scope.Dispose();
+                }
+            }
+
+        }
+        #endregion
     }
 }

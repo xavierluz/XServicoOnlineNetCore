@@ -11,7 +11,7 @@ namespace Services.seguranca.hash
         private byte[] salt = new byte[128 / 8];
         private string conteudo = string.Empty;
         private Hash256(string conteudo) => this.conteudo = conteudo;
-        public static Hash256 Getinstance(string conteudo) => new Hash256(conteudo);
+        public static Hash256 GetInstance(string conteudo) => new Hash256(conteudo);
         public string Create()
         {
             using (var rng = RandomNumberGenerator.Create())
@@ -21,7 +21,7 @@ namespace Services.seguranca.hash
             string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
             password: conteudo,
             salt: salt,
-            prf: KeyDerivationPrf.HMACSHA1,
+            prf: KeyDerivationPrf.HMACSHA256,
             iterationCount: 10000,
             numBytesRequested: 256 / 8));
             return hashed;

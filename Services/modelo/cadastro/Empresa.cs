@@ -18,7 +18,10 @@ namespace Services.modelo.cadastro
             return new Empresa();
         }
         public Guid Id { get; set; }
+        //Aes KEY
         public string Chave { get; set; }
+        //Aes IV
+        public string VetorInicializacao { get; set; }
         public string CnpjCpf { get; set; }
         public string RazaoSocial { get; set; }
         public string NomeFantasia { get; set; }

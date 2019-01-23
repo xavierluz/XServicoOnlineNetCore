@@ -19,7 +19,9 @@ namespace Services.cadastro.empresa
         private EmpresaRepositorio empresaRepositorio = null;
         private UsuarioRepositorio  usuarioRepositorio = null;
         private CriptografiaFactory criptografiaFactory = null;
-        
+        private string hashKey;
+        private string hashIv;
+
         private EmpresaBusiness(IsolationLevel isolationLevel) : base(isolationLevel)
         {
             this.cadastroUnitOfWork = CadastroUnitOfWork.GetInstance(base.isolationLevel);
@@ -137,6 +139,45 @@ namespace Services.cadastro.empresa
             }
         }
 
+        public override async Task<string> GetHashIvDaEmpresa(IEmpresa empresa, IUsuario usuario)
+        {
+
+            await cadastroUnitOfWork.CreateTransacao();
+
+            IQueryable<Empresa> query = (from q in this.empresaRepositorio.cadastroContexto.Empresas
+                                         join u in this.usuarioRepositorio.cadastroContexto.Usuarios on q.Id equals u.EmpresaId
+                                         where q.Ativo == true
+                                            && q.Id == empresa.Id
+                                            && q.Email == empresa.Email
+                                         select q);
+            Empresa _empresa = await this.empresaRepositorio.GetAsync(query);
+            return _empresa.VetorInicializacao;
+        }
+
+        public override async Task<string> GetHashIvDaEmpresa()
+        {
+            return await Task.Run(() => hashIv);
+        }
+
+        public override async Task<string> GetHashKeyDaEmpresa()
+        {
+            return await Task.Run(() => hashKey);
+        }
+
+        public override async Task<string> GetHashKeyDaEmpresa(IEmpresa empresa, IUsuario usuario)
+        {
+            await cadastroUnitOfWork.CreateTransacao();
+    
+            IQueryable<Empresa> query = (from q in this.empresaRepositorio.cadastroContexto.Empresas
+                                         join u in this.usuarioRepositorio.cadastroContexto.Usuarios on q.Id equals u.EmpresaId
+                                         where q.Ativo == true
+                                            && q.Id == empresa.Id 
+                                            && q.Email == empresa.Email 
+                                         select q);
+            Empresa _empresa =  await this.empresaRepositorio.GetAsync(query);
+            return _empresa.Chave;
+        }
+
         public override async Task<int> GetQuantidade()
         {
             IQueryable<Empresa> query = (from q in this.empresaRepositorio.cadastroContexto.Empresas
@@ -157,10 +198,13 @@ namespace Services.cadastro.empresa
             {
                 Empresa _empresa = Empresa.GetInstance().GetEmpresa(empresa);
                 _empresa.Ativo = true;
-                string criptografar = string.Format("{0}{1}", _empresa.RazaoSocial, _empresa.CnpjCpf);
-                criptografiaFactory = CriptografiaFactory.Create(SHA1Criptografia.Create(criptografar));
-                await criptografiaFactory.CreateHashData();
-                _empresa.Chave = await criptografiaFactory.GetToken();
+                string criptografarKey = string.Format("{0}{1}", _empresa.RazaoSocial, _empresa.CnpjCpf);
+                this.CreateHashKey(criptografarKey);
+                _empresa.Chave = this.hashKey;
+
+                string criptografarIv = string.Format("{0}{1}", _empresa.Email, _empresa.Telefone);
+                this.CreateHashIv(criptografarKey);
+                _empresa.VetorInicializacao = this.hashIv;
 
                 await this.empresaRepositorio.AdicionarAsync(_empresa);
                 await cadastroUnitOfWork.SalvarAsync();
@@ -183,6 +227,17 @@ namespace Services.cadastro.empresa
                 await Task.Run(() => cadastroUnitOfWork.Rollback());
                 cadastroUnitOfWork.Dispose();
             }
+        }
+
+        private void CreateHashKey(string conteudo)
+        {
+            IHash hash = Hash256.GetInstance(conteudo);
+            this.hashKey = hash.Create();
+        }
+        private void CreateHashIv(string conteudo)
+        {
+            IHash hash = Hash256.GetInstance(conteudo);
+            this.hashIv = hash.Create();
         }
     }
 }

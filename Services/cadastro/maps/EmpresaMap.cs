@@ -19,6 +19,7 @@ namespace Services.cadastro.maps
                 b.Property(x => x.NomeFantasia).HasMaxLength(200);
                 b.Property(x => x.Email).HasMaxLength(100).IsRequired();
                 b.Property(x => x.Chave).IsRequired().HasMaxLength(1000);
+                b.Property(x => x.VetorInicializacao).IsRequired().HasMaxLength(1000);
                 b.Property(x => x.CnpjCpf).IsRequired().HasMaxLength(15);
                 b.Property(x => x.Cep).IsRequired().HasMaxLength(10);
                 b.Property(x => x.Logradouro).IsRequired().HasMaxLength(100);

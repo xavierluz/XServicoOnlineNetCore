@@ -64,7 +64,7 @@ using XServicoOnline.Models;
                         ");
             EndContext();
             BeginContext(286, 550, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39b70026c0204256bfc842842c52151b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e8d4f6936ea3459599490d0d4e6cb987", async() => {
                 BeginContext(360, 472, true);
                 WriteLiteral(@"
                             <div class=""card-icon card-menu-link"">
@@ -112,7 +112,7 @@ using XServicoOnline.Models;
                         ");
             EndContext();
             BeginContext(1483, 561, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "574bea4c3f644b589c7194f648fb7a53", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "99a72a6f95494eafa9c1930fd7ec50e8", async() => {
                 BeginContext(1561, 479, true);
                 WriteLiteral(@"
                             <div class=""card-icon card-menu-link"">
@@ -160,7 +160,7 @@ using XServicoOnline.Models;
                         ");
             EndContext();
             BeginContext(2691, 553, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fae1a06b080e4c12893db4c244efca51", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b821b09fe2d14075bf1998e8acd8962c", async() => {
                 BeginContext(2764, 476, true);
                 WriteLiteral(@"
                             <div class=""card-icon card-menu-link"">
