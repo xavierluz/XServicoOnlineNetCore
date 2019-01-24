@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Services.seguranca
 {
-    internal class CriptografiaFactory
+    public class CriptografiaFactory
     {
         private CriptografiaStrategy _strategy = null;
 
@@ -19,9 +19,9 @@ namespace Services.seguranca
             return new CriptografiaFactory(strategy);
         }
 
-        public Task<string> HashData
+        public async Task<string> GetHashData()
         {
-            get { return this._strategy.HashData; }
+            return await this._strategy.GetHashData(); 
         }
 
         public async Task CreateHashData()
@@ -36,6 +36,10 @@ namespace Services.seguranca
         public async Task<string> GetToken()
         {
             return await _strategy.GetToken();
+        }
+        public void AdicionarConteudoParaCriptografar(string conteudoParaCriptografar)
+        {
+            _strategy.AdicionarConteudoParaCriptografar(conteudoParaCriptografar);
         }
     }
 }

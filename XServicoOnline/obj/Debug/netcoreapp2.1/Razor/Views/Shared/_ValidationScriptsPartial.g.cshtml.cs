@@ -64,12 +64,12 @@ using XServicoOnline.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             BeginContext(0, 256, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9dfbd1dffa4742ae89918efb8a12d3f1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "25805a43c81f485f862b22cbd09af7d2", async() => {
                 BeginContext(35, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(41, 66, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e39d9aa0582b4af99d1b5b225d14b302", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "205dd688f5a84de08df27d9132859402", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -104,12 +104,12 @@ using XServicoOnline.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(258, 935, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1e9c64daf1b548fbae187a9dc38b8801", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df0cce6321d34793a4b9bfda7e37b825", async() => {
                 BeginContext(293, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(299, 390, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "55c5bf8fe9454efca6644cf671d93504", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7f19033336a94c79a642c38004475255", async() => {
                     BeginContext(674, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
@@ -137,7 +137,7 @@ using XServicoOnline.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(695, 482, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fcf3c7be9fc2407ea108597e00b18fb6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "655a95abee364dce8fcc2e18bce82a53", async() => {
                     BeginContext(1162, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();

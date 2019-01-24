@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServicesInterfaces.seguranca;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -34,6 +35,8 @@ namespace ServicesInterfaces.cadastro
         public abstract Task<string> GetHashIvDaEmpresa();
         public abstract Task<string> GetHashKeyDaEmpresa(IEmpresa empresa,IUsuario usuario);
         public abstract Task<string> GetHashIvDaEmpresa(IEmpresa empresa, IUsuario usuario);
+        public abstract Task<IKeyIv> GetKeyIv(string userName);
+        public abstract Task<IEmpresa> GetEmpresa(string userName);
         public abstract Task Commit();
         public abstract Task Rollback();
         #endregion

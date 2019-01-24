@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Editar Usuário";
-    Layout = "~/Views/Shared/_LayoutInicial.cshtml";
 }
 
 <div class="wrapper ">
@@ -23,7 +22,7 @@
                                     <input type="hidden" asp-for="Id" />
                                     <input type="hidden" asp-for="Email" />
                                     <input type="hidden" asp-for="UserName" />
-                                    <input type="hidden" asp-for="EmpresaId" />
+                                    <input type="hidden" asp-for="EmpresaIdCriptografada" />
                                     <div class="row">
                                         <div class="col-md-1">
                                             <i class="material-icons icon-usuario-margin-top">person</i>

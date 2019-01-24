@@ -16,35 +16,34 @@ namespace Services.seguranca.hash
         private byte[] Iv = null;
         private IEmpresa empresa;
         private IUsuario usuario;
-        private AesCriptografia(IEmpresa empresa, string conteudoParaCriptografar)
+        private AesCriptografia(IEmpresa empresa)
         {
-            this._conteudoParaCriptografar = conteudoParaCriptografar;
             this.empresa = empresa;
         }
-        private AesCriptografia(IUsuario usuario, string conteudoParaCriptografar)
+        private AesCriptografia(IUsuario usuario)
         {
-            this._conteudoParaCriptografar = conteudoParaCriptografar;
             this.usuario = usuario;
         }
-        internal static AesCriptografia CreateKeyEmpresa(IEmpresa empresa,string conteudoParaCriptografar)
+        internal static AesCriptografia CreateKeyEmpresa(IEmpresa empresa)
         {
-            return new AesCriptografia(empresa,conteudoParaCriptografar);
+            return new AesCriptografia(empresa);
         }
-        internal static AesCriptografia CreateKeyUsuario(IUsuario usuario, string conteudoParaCriptografar)
+        internal static AesCriptografia CreateKeyUsuario(IUsuario usuario)
         {
-            return new AesCriptografia(usuario, conteudoParaCriptografar);
+            return new AesCriptografia(usuario);
         }
-        internal override Task<string> HashData
+        internal override async Task<string> GetHashData()
         {
-            get { return getCriptografia(); }
-
+            return await getCriptografia();
         }
+        
 
         internal override async Task CreateHashData()
         {
             using (Aes aes = Aes.Create())
             {
                 SetKeyIv();
+                
                 byte[] ecriptado = EncryptStringEmBytesAes(this._conteudoParaCriptografar, this.Key, this.Iv);
                 this._conteudoCriptografado = await Task.Run(()=> ecriptado);
 
@@ -79,7 +78,7 @@ namespace Services.seguranca.hash
         {
             var criptoGrafias = Task.Run(() =>
             {
-                return this._conteudoCriptografado.ToString();
+                return Convert.ToBase64String(this._conteudoCriptografado);
             });
 
             return await criptoGrafias;
@@ -100,7 +99,8 @@ namespace Services.seguranca.hash
            
             using (Aes aesAlg = Aes.Create())
             {
-
+                aesAlg.Mode = CipherMode.CBC;
+                aesAlg.Padding = PaddingMode.PKCS7;
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
 
@@ -145,7 +145,8 @@ namespace Services.seguranca.hash
             {
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
-
+                aesAlg.Mode = CipherMode.CBC;
+                aesAlg.Padding = PaddingMode.PKCS7;
                 // Create o objeto encryptor para executar a transformação de fluxo
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
 
@@ -178,9 +179,14 @@ namespace Services.seguranca.hash
             }
             else
             {
-                this.Key = Encoding.UTF8.GetBytes(this.empresa.Chave);
+                this.Key = Convert.FromBase64String(this.empresa.Chave);
                 this.Iv = Encoding.UTF8.GetBytes(this.empresa.VetorInicializacao);
             }
+        }
+
+        internal override void AdicionarConteudoParaCriptografar(string conteudoParaCriptografar)
+        {
+            this._conteudoParaCriptografar = conteudoParaCriptografar;
         }
     }
 }

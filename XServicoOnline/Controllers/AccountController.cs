@@ -15,6 +15,11 @@ using XServicoOnline.Models;
 using XServicoOnline.ViewModels;
 using XServicoOnline.WebClasses;
 using Microsoft.EntityFrameworkCore;
+using ServicesInterfaces.seguranca;
+using Services.seguranca;
+using Services.seguranca.hash;
+using Services.cadastro;
+using ServicesInterfaces.cadastro;
 
 namespace XServicoOnline.Controllers
 {
@@ -172,6 +177,25 @@ namespace XServicoOnline.Controllers
         public async Task<IActionResult> EditarUsuario(string usuarioId)
         {
             Usuario usuario = await _userManager.FindByIdAsync(usuarioId);
+            IEmpresa empresa  = await usuario.GetEmpresa(User.Identity.Name);
+            CriptografiaFactory criptografiaFactory = CriptografiaFactory.Create(CadastroFactory.GetInstance().CreateAesCriptografia(empresa));
+
+            criptografiaFactory.AdicionarConteudoParaCriptografar(usuario.Id);
+            await criptografiaFactory.CreateHashData();
+            usuario.Id = await criptografiaFactory.GetHashData();
+
+            criptografiaFactory.AdicionarConteudoParaCriptografar(usuario.UserName);
+            await criptografiaFactory.CreateHashData();
+            usuario.Email = await criptografiaFactory.GetHashData();
+
+            criptografiaFactory.AdicionarConteudoParaCriptografar(usuario.UserName);
+            await criptografiaFactory.CreateHashData();
+            usuario.UserName = await criptografiaFactory.GetHashData();
+
+            criptografiaFactory.AdicionarConteudoParaCriptografar(usuario.EmpresaId.ToString());
+            await criptografiaFactory.CreateHashData();
+            usuario.EmpresaIdCriptografada = await criptografiaFactory.GetHashData();
+
             return View(usuario);
         }
         [HttpPost]

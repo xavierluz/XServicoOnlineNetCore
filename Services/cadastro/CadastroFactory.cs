@@ -1,4 +1,6 @@
 ﻿using Services.cadastro.empresa;
+using Services.seguranca;
+using Services.seguranca.hash;
 using ServicesInterfaces.cadastro;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,10 @@ namespace Services.cadastro
         public EmpresaAbstract CreateEmpresa(IsolationLevel isolationLevel)
         {
             return EmpresaBusiness.GetInstance(isolationLevel);
+        }
+        public CriptografiaStrategy CreateAesCriptografia(IEmpresa empresa)
+        {
+            return AesCriptografia.CreateKeyEmpresa(empresa);
         }
     }
 }

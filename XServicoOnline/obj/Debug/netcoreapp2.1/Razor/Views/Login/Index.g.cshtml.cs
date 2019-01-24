@@ -64,7 +64,7 @@ using XServicoOnline.Models;
             WriteLiteral("\r\n<h2>Index</h2>\r\n");
             EndContext();
             BeginContext(115, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ed6c6809440a43a58dd4e1d13851781f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "cf3105799475485baaadfbbbea2def45", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

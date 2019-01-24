@@ -19,9 +19,9 @@ namespace Services.seguranca.hash
             return new SHA1Criptografia(conteudoParaCriptografar);
         }
 
-        internal override Task<string> HashData
+        internal override async Task<string> GetHashData()
         {
-            get { return getCriptografia(); }
+            return await getCriptografia();
         }
         internal async override Task CreateHashData()
         {
@@ -70,6 +70,10 @@ namespace Services.seguranca.hash
         {
             await CreateToken();
             return await getCriptografia();
+        }
+        internal override void AdicionarConteudoParaCriptografar(string conteudoParaCriptografar)
+        {
+            this._conteudoParaCriptografar = conteudoParaCriptografar;
         }
     }
 }

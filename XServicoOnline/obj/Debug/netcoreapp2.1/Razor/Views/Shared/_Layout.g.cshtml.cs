@@ -92,7 +92,7 @@ using XServicoOnline.Models;
             WriteLiteral("<!DOCTYPE html>\r\n<html lang=\"pt-br\">\r\n");
             EndContext();
             BeginContext(38, 1956, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "901f25b2beb641dfa80becb467b15060", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "219baf436e1d4807806e90d67fc45e6f", async() => {
                 BeginContext(44, 222, true);
                 WriteLiteral("\r\n    <meta charset=\"utf-8\" />\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\r\n    <meta content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\" name=\"viewport\">\r\n\r\n    <title>");
                 EndContext();
@@ -107,7 +107,7 @@ using XServicoOnline.Models;
                 WriteLiteral(" - XServicoOnline</title>\r\n\r\n    ");
                 EndContext();
                 BeginContext(317, 831, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5682ce8353c94dd8a9d2a31a66888000", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5782f1090cdf493382c291bdbd5b2513", async() => {
                     BeginContext(352, 368, true);
                     WriteLiteral(@"
         <!--     Fonts and icons     -->
@@ -117,7 +117,7 @@ using XServicoOnline.Models;
         ");
                     EndContext();
                     BeginContext(720, 72, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7511db4a96254216b84067aae7625602", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c8b853bc0aed49df91fc6288bf07efe3", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -140,7 +140,7 @@ using XServicoOnline.Models;
         ");
                     EndContext();
                     BeginContext(1074, 54, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "5c8298608fb9450583c4d93c722291b2", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "73463123f1d74702a1efbafd12726186", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -176,7 +176,7 @@ using XServicoOnline.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(1154, 831, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2f4e6552c82549908e090a144c63e3aa", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c70a22d1d3845e8aa6c8fcf500f00d9", async() => {
                     BeginContext(1189, 368, true);
                     WriteLiteral(@"
         <!--     Fonts and icons     -->
@@ -186,7 +186,7 @@ using XServicoOnline.Models;
         ");
                     EndContext();
                     BeginContext(1557, 72, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "33af587f03884a51ac464778615bda0e", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "2936c6373186481c8f10a44c872c2c9d", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -209,7 +209,7 @@ using XServicoOnline.Models;
         ");
                     EndContext();
                     BeginContext(1911, 54, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7f9f77b91b8b491f98dcb920469ab66b", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "57d9e1c5e4b842e090ad9cf61876f66b", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -260,7 +260,7 @@ using XServicoOnline.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(1996, 21112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84526bce8e634090b70e78b971062fef", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a63e342a12b74ea8b14545cc3e56a187", async() => {
                 BeginContext(2011, 1013, true);
                 WriteLiteral(@"
 
@@ -288,7 +288,7 @@ using XServicoOnline.Models;
                         ");
                 EndContext();
                 BeginContext(3024, 206, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "011a2f29c108448c8117fb1cdf8794c0", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cc60d4ed2a8040e0a88fc431eaf16345", async() => {
                     BeginContext(3089, 137, true);
                     WriteLiteral("\r\n                            <i class=\"material-icons\">ballot</i>\r\n                            <p>Material</p>\r\n                        ");
                     EndContext();
@@ -392,7 +392,7 @@ using XServicoOnline.Models;
                         ");
                 EndContext();
                 BeginContext(6501, 560, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8826d2378e7d41d194cedaf40454c613", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dd88247b2c104ac9b70810599cea4e2c", async() => {
                     BeginContext(6527, 527, true);
                     WriteLiteral(@"
                             <div class=""input-group no-border"">
@@ -593,12 +593,12 @@ using XServicoOnline.Models;
     ");
                 EndContext();
                 BeginContext(15648, 3702, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "94804fb0009b4967b2604995e3a6e241", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c73c8c183e143b793227ad70691244c", async() => {
                     BeginContext(15683, 46, true);
                     WriteLiteral("\r\n        <!--   Core JS Files   -->\r\n        ");
                     EndContext();
                     BeginContext(15729, 77, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3837a2e6b9d04dd8bf31fd20bfef3a91", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b0acfec817c436bb3f42581f4a17dbc", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -617,7 +617,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n        ");
                     EndContext();
                     BeginContext(15816, 77, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dee53012dbab491fbe2fb9ffda2ea962", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88362fb070054d40804b356c14295a26", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -636,7 +636,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n        ");
                     EndContext();
                     BeginContext(15903, 96, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1947382eb1384d7d827569b10012fa64", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "702b4c896bae48688340025f73459a98", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -655,7 +655,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Plugin for the Perfect Scrollbar -->\r\n        ");
                     EndContext();
                     BeginContext(16062, 75, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5ec0f5960b054173b7b19d05325f00a9", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1dc9b75ff3ae486aa44ff5e7688708a6", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -673,7 +673,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Plugin for the momentJs  -->\r\n        ");
                     EndContext();
                     BeginContext(16192, 57, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c11f5992f70437298d85c255f8ad0a5", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bfb633854fbc46e3aef1947094d48b85", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -691,7 +691,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Plugin for Sweet Alert -->\r\n        ");
                     EndContext();
                     BeginContext(16303, 58, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "197dad96cb094223b1bb496d336bbe10", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f6a841b3972746289371b3e929a1830e", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -709,7 +709,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Forms Validations Plugin -->\r\n        ");
                     EndContext();
                     BeginContext(16416, 66, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "581121554b41470c8bf2825eb0fe972e", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "31f95d553f1642d7b646952e7380d5e5", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -727,7 +727,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->\r\n        ");
                     EndContext();
                     BeginContext(16612, 70, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3bc1c0b5d7e448ff9c27b93539e3abe9", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4044f84040634988b5f73eac1be7ff6e", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -745,7 +745,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--\tPlugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->\r\n        ");
                     EndContext();
                     BeginContext(16803, 69, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36613dd867274727bc2e139c57d7a123", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e8ffc52362ea4929bd0368b471675fc5", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -763,7 +763,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->\r\n        ");
                     EndContext();
                     BeginContext(17012, 75, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "28593037882e4ff9b94f990369826eee", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f802105cf98946fa8812f02d2640bc8a", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -781,7 +781,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->\r\n        ");
                     EndContext();
                     BeginContext(17193, 68, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1ad9dd79e4174a81b431e961429fe0f7", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cf74f6d5171545d3af1983c9e29367af", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -799,7 +799,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--\tPlugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->\r\n        ");
                     EndContext();
                     BeginContext(17394, 66, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "59cae24ec69543a280fa5702c4551f82", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dc571f06a5314b3ebb73b74a009420c0", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -817,7 +817,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->\r\n        ");
                     EndContext();
                     BeginContext(17591, 66, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "412df04d29e245c380cabd63ae8f9a4c", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42f7cb8a24f54cbd86c2dbdcf82ab500", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -835,7 +835,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->\r\n        ");
                     EndContext();
                     BeginContext(17783, 63, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "32dddc59cfe54d22aa436ef5d463a6b8", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7eff31a9556e4629b3721584be17fbdd", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -853,7 +853,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->\r\n        ");
                     EndContext();
                     BeginContext(17957, 64, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c5c4625fd68f4de682fec7b4a0fc20b9", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "94928e8d56474a169b8c99d67112b5cb", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -871,7 +871,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->\r\n        ");
                     EndContext();
                     BeginContext(18136, 61, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b61239254cf4110a63cad18a54bcc4e", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4a7efd7fbc914a6fb8acccc3f90c4f7c", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -895,7 +895,7 @@ using XServicoOnline.Models;
         ");
                     EndContext();
                     BeginContext(18488, 57, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "424706b6c54b4144a2246f8542e636f1", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6b404f30e9844f580724914b76c3938", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -913,7 +913,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Google Maps Plugin    -->\r\n        <script src=\"https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE\"></script>\r\n\r\n        <!-- Chartist JS -->\r\n        ");
                     EndContext();
                     BeginContext(18721, 59, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d56f08ea0ed045bca72285ec9777fcac", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e568dd50f24943df94e9aac200e8f1e5", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -931,7 +931,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Notifications Plugin    -->\r\n        ");
                     EndContext();
                     BeginContext(18835, 63, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "baba735f4a0445a38a5e6599de29d01d", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "79abd5734a994d00b2b25e5226103834", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -949,7 +949,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->\r\n        ");
                     EndContext();
                     BeginContext(19019, 80, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "47e6a0963de84373b7445be90e3cce03", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f4718300c5874f5ea35e12e3a95a7691", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -968,7 +968,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n        <!-- Material Dashboard DEMO methods, don\'t include it in your project! -->\r\n        ");
                     EndContext();
                     BeginContext(19194, 45, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c41ee046c4944f8835019359f515cf1", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "295a08433a7547568fa6f684746184af", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -986,7 +986,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n        <!--JS Principal-->\r\n        ");
                     EndContext();
                     BeginContext(19278, 43, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "868b26d2b33d48c6aaf60f32490a3f83", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a7a44345c8a94946b19c85f22cdb185e", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1021,12 +1021,12 @@ using XServicoOnline.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(19356, 3693, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "35e2be7458474a1fad6b3278757ea0e6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5efef8c60161486aac5161ae601dac32", async() => {
                     BeginContext(19391, 46, true);
                     WriteLiteral("\r\n        <!--   Core JS Files   -->\r\n        ");
                     EndContext();
                     BeginContext(19437, 77, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fd0d5f5744bd415daeecd443a96f055b", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c059908c434943f09515c2a25c38a315", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1045,7 +1045,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n        ");
                     EndContext();
                     BeginContext(19524, 77, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "78d92bf7759248f29dccf8d2cfcdb8ca", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42c95e3919f349f3936b14e50c2302ff", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1064,7 +1064,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n        ");
                     EndContext();
                     BeginContext(19611, 96, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7adefeb1b65f4f85bde07a6844be8894", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de792418c3e84fe194aaae1928c80808", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1083,7 +1083,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Plugin for the Perfect Scrollbar -->\r\n        ");
                     EndContext();
                     BeginContext(19770, 75, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "afa4cb986d1b424c91dd598c514ae19c", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a7f467ea543454390a4ccb3aaedc97b", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1101,7 +1101,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Plugin for the momentJs  -->\r\n        ");
                     EndContext();
                     BeginContext(19900, 57, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ce2862751fc4eea8554658ebdc97688", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "040001fb12ed4bbd950b59bf9c54fb90", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1119,7 +1119,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Plugin for Sweet Alert -->\r\n        ");
                     EndContext();
                     BeginContext(20011, 58, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "643953580a54411fbdc31e81c0f23f5c", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9c236363e25f4639a2f3ee6b7bab7d67", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1137,7 +1137,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Forms Validations Plugin -->\r\n        ");
                     EndContext();
                     BeginContext(20124, 66, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "504219940c4841c1ae2c13877ecfc837", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b8922c4b84b948c1ae66a748bbdf5ed5", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1155,7 +1155,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->\r\n        ");
                     EndContext();
                     BeginContext(20320, 70, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44abcfef0a7745d3acec469dcd6afab1", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "68149eeabfff49e785df83c7d93eca00", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1173,7 +1173,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--\tPlugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->\r\n        ");
                     EndContext();
                     BeginContext(20511, 69, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "599adbdbb93c4a3fa2989a8eace0785a", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6f06355701d1477a87e0c7442fe08c5f", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1191,7 +1191,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->\r\n        ");
                     EndContext();
                     BeginContext(20720, 75, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e5f954bd3884280ab48608f1496556c", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "46c84d64d67343b390791e6f404d1bf6", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1209,7 +1209,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->\r\n        ");
                     EndContext();
                     BeginContext(20901, 68, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f057f3a86b5546e995895eeb27db7723", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18b601cc174642b7a2f82a38ac119bf1", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1227,7 +1227,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--\tPlugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->\r\n        ");
                     EndContext();
                     BeginContext(21102, 66, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a50a45442fe46239e41ecd7623bd644", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ea018eb170884d2abc4e661b82729f30", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1245,7 +1245,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->\r\n        ");
                     EndContext();
                     BeginContext(21299, 66, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a153a121725342b0a61b765ef616eaec", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a9432a83f3c4229ab297d4761b3e806", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1263,7 +1263,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->\r\n        ");
                     EndContext();
                     BeginContext(21491, 63, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8072cc0f060d4f24824dcd3f401e4dd2", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a31e4358b0564ca89dbc77a8ef10ba2e", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1281,7 +1281,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->\r\n        ");
                     EndContext();
                     BeginContext(21665, 64, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "08183b48f67147d1a8b58163081d3729", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b9d7471ad16349ae94c3526efd14e8ff", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1299,7 +1299,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->\r\n        ");
                     EndContext();
                     BeginContext(21844, 61, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "828e7bb925044db3b40bdabeaa9a44f6", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ba4398515a9421fb5da05608cdd46bb", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1323,7 +1323,7 @@ using XServicoOnline.Models;
         ");
                     EndContext();
                     BeginContext(22196, 57, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4047fe6f2797453ba93e1d5c235bbc49", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "79645895f3e0427a8a9199bb724cd045", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1341,7 +1341,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Google Maps Plugin    -->\r\n        <script src=\"https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE\"></script>\r\n\r\n        <!-- Chartist JS -->\r\n        ");
                     EndContext();
                     BeginContext(22429, 59, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e68085fe0dec4360bf9935fd818ed713", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5f62cb4e90444a229bbcfeb733cf4c1c", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1359,7 +1359,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!--  Notifications Plugin    -->\r\n        ");
                     EndContext();
                     BeginContext(22543, 63, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "49498985db7e45c2a9ba17c8fbc9c5db", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "03f6cec8c6284bee9d8ec7ed46e11e46", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1377,7 +1377,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n\r\n        <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->\r\n        ");
                     EndContext();
                     BeginContext(22727, 80, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f118a963b8f94cc491a2f72e76c57d82", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "608f8ac30d9249039accc2291dde791c", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1396,7 +1396,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n        <!-- Material Dashboard DEMO methods, don\'t include it in your project! -->\r\n        ");
                     EndContext();
                     BeginContext(22902, 45, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7dfec8e0c5d4ce9873665bef23f5654", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c26d1b8778604b91aaa4b42ddf0a1578", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1414,7 +1414,7 @@ using XServicoOnline.Models;
                     WriteLiteral("\r\n        <!--JS Principal-->\r\n        ");
                     EndContext();
                     BeginContext(22986, 43, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "858e14ad1aa843edba2d721f60b5c20d", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f8871754bdc440eba41d914754c52dc", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

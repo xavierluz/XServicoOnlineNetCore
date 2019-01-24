@@ -70,7 +70,7 @@ using XServicoOnline.Models;
                         ");
             EndContext();
             BeginContext(281, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7bfcb947d0274213a22212ed891fdcbe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d86201e74f414e60ac4ae20e383f9e9c", async() => {
                 BeginContext(377, 4, true);
                 WriteLiteral("Novo");
                 EndContext();
@@ -123,7 +123,7 @@ using XServicoOnline.Models;
                         ");
             EndContext();
             BeginContext(2022, 36, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "aef7f743a9da4dac966b3309de05ff3a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "015ac63139314b4d82b855c41b6f8dbd", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -146,7 +146,7 @@ using XServicoOnline.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(2222, 44, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "6b9b71c4cd0840398db8fb8fd59ba267", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c4d76b5eb0f54ece92879f2e14e6f298", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -165,7 +165,7 @@ using XServicoOnline.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(2272, 41, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b3d6549046b145ff9bb533e598cc0759", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "debdde32d59a4d73bc8396963516dad6", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -184,7 +184,7 @@ using XServicoOnline.Models;
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(2319, 71, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "290c4ac398644720ac6790ef930a3151", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "471bd8bbadf64f478de747b9524b0e26", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

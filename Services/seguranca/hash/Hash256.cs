@@ -8,7 +8,7 @@ namespace Services.seguranca.hash
 {
     internal class Hash256 : IHash
     {
-        private byte[] salt = new byte[128 / 8];
+        private byte[] salt = new byte[128];
         private string conteudo = string.Empty;
         private Hash256(string conteudo) => this.conteudo = conteudo;
         public static Hash256 GetInstance(string conteudo) => new Hash256(conteudo);

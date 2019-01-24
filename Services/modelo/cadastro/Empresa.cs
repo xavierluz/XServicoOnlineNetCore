@@ -56,8 +56,9 @@ namespace Services.modelo.cadastro
                 Telefone = empresa.Telefone,
                 WhatsApp = empresa.WhatsApp,
                 Ativo = empresa.Ativo,
-                Email = empresa.Email
-            };
+                Email = empresa.Email,
+                VetorInicializacao = empresa.VetorInicializacao
+        };
         return _empresa;
         }
         public IEmpresa GetEmpresa()
@@ -78,6 +79,7 @@ namespace Services.modelo.cadastro
             _empresa.WhatsApp = this.WhatsApp;
             _empresa.Ativo = this.Ativo;
             _empresa.Email = this.Email;
+            _empresa.VetorInicializacao = this.VetorInicializacao;
             if (this.Almoxarifados != null)
                 _empresa.IAlmoxarifados = this.IAlmoxarifados;
             return _empresa;

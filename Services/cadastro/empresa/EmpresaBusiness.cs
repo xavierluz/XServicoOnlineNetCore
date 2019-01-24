@@ -3,6 +3,7 @@ using Services.modelo.cadastro;
 using Services.seguranca;
 using Services.seguranca.hash;
 using ServicesInterfaces.cadastro;
+using ServicesInterfaces.seguranca;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +16,7 @@ namespace Services.cadastro.empresa
     internal class EmpresaBusiness : EmpresaAbstract
     {
         private static string SENHA_PADRAO = "@S2rvico0n@line";
+        private static string GERAR_IV = "seAes2019empresa";
         private CadastroUnitOfWork cadastroUnitOfWork = null;
         private EmpresaRepositorio empresaRepositorio = null;
         private UsuarioRepositorio  usuarioRepositorio = null;
@@ -151,6 +153,7 @@ namespace Services.cadastro.empresa
                                             && q.Email == empresa.Email
                                          select q);
             Empresa _empresa = await this.empresaRepositorio.GetAsync(query);
+            cadastroUnitOfWork.Commit();
             return _empresa.VetorInicializacao;
         }
 
@@ -198,13 +201,10 @@ namespace Services.cadastro.empresa
             {
                 Empresa _empresa = Empresa.GetInstance().GetEmpresa(empresa);
                 _empresa.Ativo = true;
-                string criptografarKey = string.Format("{0}{1}", _empresa.RazaoSocial, _empresa.CnpjCpf);
+                string criptografarKey = string.Format("{0}{1}",_empresa.CnpjCpf, _empresa.Email);
                 this.CreateHashKey(criptografarKey);
                 _empresa.Chave = this.hashKey;
-
-                string criptografarIv = string.Format("{0}{1}", _empresa.Email, _empresa.Telefone);
-                this.CreateHashIv(criptografarKey);
-                _empresa.VetorInicializacao = this.hashIv;
+                _empresa.VetorInicializacao = GERAR_IV;
 
                 await this.empresaRepositorio.AdicionarAsync(_empresa);
                 await cadastroUnitOfWork.SalvarAsync();
@@ -238,6 +238,38 @@ namespace Services.cadastro.empresa
         {
             IHash hash = Hash256.GetInstance(conteudo);
             this.hashIv = hash.Create();
+        }
+
+        public override async Task<IKeyIv> GetKeyIv(string userName)
+        {
+            KeyIv keyIv = KeyIv.GetInstance(userName);
+            return await keyIv.Get();
+        }
+
+        public override async Task<IEmpresa> GetEmpresa(string userName)
+        {
+            await cadastroUnitOfWork.CreateTransacao();
+            try
+            {
+                this.usuarioRepositorio = cadastroUnitOfWork.GetUsuarioRepositorio();
+                IQueryable<Empresa> query = (from q in this.empresaRepositorio.cadastroContexto.Empresas
+                                             join u in this.usuarioRepositorio.cadastroContexto.Usuarios on q.Id equals u.EmpresaId
+                                             where q.Ativo == true
+                                                && u.UserName.Equals(userName)
+                                             select q);
+                Empresa _empresa = await this.empresaRepositorio.GetAsync(query);
+                cadastroUnitOfWork.Commit();
+
+                return _empresa.GetEmpresa();
+            }catch(Exception ex)
+            {
+                cadastroUnitOfWork.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                cadastroUnitOfWork.Dispose();
+            }
         }
     }
 }

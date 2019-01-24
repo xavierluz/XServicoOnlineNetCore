@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Services.bases;
+using Services.cadastro;
+using ServicesInterfaces.cadastro;
+using ServicesInterfaces.seguranca;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -40,6 +43,8 @@ namespace XServicoOnline.Models
         private DbContextOptionsBuilder<ApplicationDbContext> optionsBuilder;
         [NotMapped]
         private DbConnection dbConnection = null;
+        [NotMapped]
+        public string EmpresaIdCriptografada { get; set; }
         #endregion
 
         #region "Atributos de manipulação"
@@ -145,6 +150,16 @@ namespace XServicoOnline.Models
                 }
             }
 
+        }
+        public async Task<IKeyIv> GetKeyIv(string userName)
+        {
+            EmpresaAbstract empresaAbstract = CadastroFactory.GetInstance().CreateEmpresa(System.Data.IsolationLevel.ReadUncommitted);
+            return await empresaAbstract.GetKeyIv(userName);
+        }
+        public async Task<IEmpresa> GetEmpresa(string userName)
+        {
+            EmpresaAbstract empresaAbstract = CadastroFactory.GetInstance().CreateEmpresa(System.Data.IsolationLevel.ReadUncommitted);
+            return await empresaAbstract.GetEmpresa(userName);
         }
         #endregion
     }

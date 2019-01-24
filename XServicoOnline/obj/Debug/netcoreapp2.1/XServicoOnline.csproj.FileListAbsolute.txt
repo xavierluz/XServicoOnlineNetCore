@@ -185,3 +185,5 @@ C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNe
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Account\FuncaoIndex.g.cshtml.cs
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Account\FuncaoReivindicacaoIndex.g.cshtml.cs
 C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Account\CreateFuncaoReivindicacao.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Account\EditarUsuario.g.cshtml.cs
+C:\Users\807326\Documents\particular\projetos\servicoonline\app\XServicoOnlineNetCore\XServicoOnline\obj\Debug\netcoreapp2.1\Razor\Views\Account\UsuarioIndex.g.cshtml.cs

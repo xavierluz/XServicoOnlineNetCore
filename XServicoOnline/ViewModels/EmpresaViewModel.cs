@@ -38,7 +38,7 @@ namespace XServicoOnline.ViewModels
         [DataType(DataType.EmailAddress)]
         public string Email { get; set ; }
         public ICollection<IAlmoxarifado> IAlmoxarifados { get; set; }
-        
+        public string VetorInicializacao { get; set ; }
 
         public IEmpresa GetEmpresa()
         {
@@ -56,7 +56,8 @@ namespace XServicoOnline.ViewModels
                 Telefone = this.Telefone,
                 WhatsApp = this.WhatsApp,
                 Ativo = this.Ativo,
-                Email =  this.Email
+                Email =  this.Email,
+                VetorInicializacao= this.VetorInicializacao
             };
 
             return empresa;
