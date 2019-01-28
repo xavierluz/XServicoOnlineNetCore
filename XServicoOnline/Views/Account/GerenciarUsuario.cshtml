@@ -1,0 +1,76 @@
+﻿@model XServicoOnline.ViewModels.UsuarioFuncaoViewModel
+
+@{
+    ViewData["Title"] = "Gerenciar Usuário";
+}
+
+<div class="wrapper ">
+
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid alinhamento-form-login-register">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">Editar Usuário</h4>
+                                <p class="card-category">Preencha os campos</p>
+                            </div>
+                            <div class="card-body">
+                                <form asp-action="GerenciarUsuario" method="post" id="formGerenciar" role="form">
+                                    <input type="hidden" asp-for="Usuario.Id" />
+                                    <input type="hidden" asp-for="Usuario.UserName" />
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <i class="material-icons icon-usuario-margin-top">person</i>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="form-group">
+                                                <label for="Nome" class="bmd-label-floating">Nome</label>
+                                                <label asp-for="Usuario.UserName" type="text" class="form-control">@Model.Usuario.Nome</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                       <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Selecione a(s)Função(ões)</label>
+                                                <select asp-for="FuncoesId" asp-items="Model.Funcoes" class="multiselect-ui"></select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.login-box -->
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/assets/js/lib/multi-select.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                $('.multiselect-ui').multiselect({
+                    includeSelectAllOption: true
+                });
+            });
+            $('#buttonSalvar').click(function () {
+                submitAjax('#formGerenciar', 'GerenciarUsuario');
+            });
+        });
+
+       
+    </script>
+}

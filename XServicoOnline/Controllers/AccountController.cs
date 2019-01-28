@@ -20,6 +20,7 @@ using Services.seguranca;
 using Services.seguranca.hash;
 using Services.cadastro;
 using ServicesInterfaces.cadastro;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace XServicoOnline.Controllers
 {
@@ -240,7 +241,9 @@ namespace XServicoOnline.Controllers
             UsuarioFuncaoViewModel usuarioFuncaoViewModel = new UsuarioFuncaoViewModel();
             usuarioFuncaoViewModel.Usuario = usuario;
             List<Funcao> funcoes = await this._roleManager.Roles.ToListAsync();
-            usuarioFuncaoViewModel.Funcoes = funcoes;
+            SelectList selectListItems = new SelectList(funcoes, "Name", "Name");
+
+            usuarioFuncaoViewModel.Funcoes = selectListItems;
 
             return View(usuarioFuncaoViewModel);
         }
@@ -254,8 +257,9 @@ namespace XServicoOnline.Controllers
                 {
                     if (usuarioFuncaoViewModel.Usuario != null)
                     {
-                        foreach (var funcao in usuarioFuncaoViewModel.FuncoesSelecionadas)
-                            await this._userManager.AddToRoleAsync(usuarioFuncaoViewModel.Usuario, funcao.Name);
+                        var usuario = await this._userManager.FindByIdAsync(usuarioFuncaoViewModel.Usuario.Id);
+                        foreach (var funcao in usuarioFuncaoViewModel.FuncoesId) 
+                            await this._userManager.AddToRoleAsync(usuario, funcao);
                         
                         this.jsonRetorno = jsonMensagemRetorno.Add("Alteração realizado com sucesso");
                     }

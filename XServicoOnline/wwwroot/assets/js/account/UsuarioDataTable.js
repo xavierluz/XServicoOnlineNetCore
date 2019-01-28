@@ -22,8 +22,8 @@
     var editarClickHandler = function (usuario) {
         window.location = './EditarUsuario?usuarioId=' + usuario.id;
     };
-    var detalheClickHandler = function (funcao) {
-        window.location = './CreateFuncaoReivindicacao?funcaoId=' + funcao.id;
+    var detalheClickHandler = function (usuario) {
+        window.location = './GerenciarUsuario?usuarioId=' + usuario.id;
     };
     var criarTableUsuario = function () {
 
