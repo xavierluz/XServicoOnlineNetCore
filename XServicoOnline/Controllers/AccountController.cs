@@ -242,10 +242,38 @@ namespace XServicoOnline.Controllers
             usuarioFuncaoViewModel.Usuario = usuario;
             List<Funcao> funcoes = await this._roleManager.Roles.ToListAsync();
             SelectList selectListItems = new SelectList(funcoes, "Name", "Name");
-
+            List<SelectPureOptions> selectsPuresOptions = new List<SelectPureOptions>();
+            foreach(var funcao in  funcoes)
+            {
+                SelectPureOptions selectPureOptions = new SelectPureOptions();
+                selectPureOptions.Label = funcao.Name;
+                selectPureOptions.Value = funcao.Name;
+                selectsPuresOptions.Add(selectPureOptions);
+                selectPureOptions = null;
+            }
+            var json = Json(selectsPuresOptions);
+            ViewBag.funcoesSelectPure = json;
             usuarioFuncaoViewModel.Funcoes = selectListItems;
-
+            usuarioFuncaoViewModel.FuncoesSelecionadas = selectsPuresOptions;
             return View(usuarioFuncaoViewModel);
+        }
+        [HttpGet]
+        public async Task<JsonResult> GetFuncoesPuroSelect()
+        {
+            List<Funcao> funcoes = await this._roleManager.Roles.ToListAsync();
+            SelectList selectListItems = new SelectList(funcoes, "Name", "Name");
+            List<SelectPureOptions> selectsPuresOptions = new List<SelectPureOptions>();
+            foreach (var funcao in funcoes)
+            {
+                SelectPureOptions selectPureOptions = new SelectPureOptions();
+                selectPureOptions.Label = funcao.Name;
+                selectPureOptions.Value = funcao.Name;
+                selectsPuresOptions.Add(selectPureOptions);
+                selectPureOptions = null;
+            }
+            var _json = Json(selectsPuresOptions);
+
+            return _json;
         }
         [HttpPost]
         public async Task<JsonResult> GerenciarUsuario(UsuarioFuncaoViewModel usuarioFuncaoViewModel)

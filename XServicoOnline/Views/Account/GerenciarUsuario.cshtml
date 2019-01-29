@@ -2,8 +2,10 @@
 
 @{
     ViewData["Title"] = "Gerenciar Usuário";
-}
 
+}
+<input type="hidden" id="_fucoesId" value="@Model.FuncoesSelecionadas" />
+<link href="~/assets/css/select-pure/select-pure.css" rel="stylesheet" />
 <div class="wrapper ">
 
     <div class="main-panel">
@@ -34,16 +36,24 @@
 
                                     </div>
                                     <div class="row">
-                                       <div class="col-md-12">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Selecione a(s)Função(ões)</label>
                                                 <select asp-for="FuncoesId" asp-items="Model.Funcoes" class="multiselect-ui"></select>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
-                                    <button type="submit" class="btn btn-primary pull-right">Salvar</button>
-                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Selecione a(s)Função(ões)</label>
+                                                <span class="funcoes"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <partial name="_BotaoSalvarRetornar" />
                                 </form>
                             </div>
                         </div>
@@ -59,7 +69,9 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/assets/js/lib/multi-select.js"></script>
+    <script src="~/assets/js/select-pure/bundle.min.js"></script>
     <script>
+
         $(document).ready(function () {
             $(function () {
                 $('.multiselect-ui').multiselect({
@@ -69,8 +81,81 @@
             $('#buttonSalvar').click(function () {
                 submitAjax('#formGerenciar', 'GerenciarUsuario');
             });
-        });
+            //console.log(JSON.stringify(@ViewBag.funcoesSelectPure));
+            getFuncoes();
 
+        });
+        var getFuncoes = function () {
+            $.get('GetFuncoesPuroSelect', {}, function (data) {
+
+                let builder = [];
+                builder.push('[');
+                $.each(data, function (index, funcao) {
+                    builder.push('{');
+                    builder.push('label:' + '"' + funcao.label + '",');
+                    builder.push('value:' + '"' + funcao.value + '"');
+                    builder.push('},');
+                });
+                builder.push(']');
+                console.log(builder.join(""));
+                var options = [
+                    {
+                        label: "AdministradorEmpresa", value: "AdministradorEmpresa"
+                    },
+                    {
+                        label: "Requisitante", value: "Requisitante"
+                    },
+                    {
+                        label: "Teste", value: "Teste"
+                    },
+                    {
+                        label: "Administrador", value: "Administrador"
+                    }
+                ]
+
+            });
+        }
        
+        var autocomplete = new SelectPure(".funcoes", {
+            options: [
+                {
+                    label: "Barbina",
+                    value: "ba",
+                },
+                {
+                    label: "Bigoli",
+                    value: "bg",
+                },
+                {
+                    label: "Bucatini",
+                    value: "bu",
+                },
+                {
+                    label: "Busiate",
+                    value: "bus",
+                },
+                {
+                    label: "Capellini",
+                    value: "cp",
+                },
+                {
+                    label: "Fedelini",
+                    value: "fe",
+                },
+                {
+                    label: "Maccheroni",
+                    value: "ma",
+                },
+                {
+                    label: "Spaghetti",
+                    value: "sp",
+                },
+            ],
+            value: ["sp"],
+            multiple: true,
+            autocomplete: true,
+            icon: "fa fa-times",
+            onChange: value => { console.log(value); },
+        });
     </script>
 }

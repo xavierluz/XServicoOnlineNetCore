@@ -277,3 +277,25 @@ span.multiselect-native-select select {
 #tableFuncaoReivindicacao_wrapper .row .ativo {
     width: 5% !important;
 }
+
+#tableUsuario_wrapper .row {
+    width: 100% !important;
+}
+
+#tableUsuario_length select {
+    margin-left: 20px !important;
+}
+
+#tableUsuario_wrapper .row .userName {
+    width: 20% !important;
+}
+
+#tableUsuario_wrapper .row .nome {
+    width: 30% !important;
+}
+#tableUsuario_wrapper .row .email {
+    width: 30% !important;
+}
+#tableUsuario_wrapper .row .ativo {
+    width: 5% !important;
+}

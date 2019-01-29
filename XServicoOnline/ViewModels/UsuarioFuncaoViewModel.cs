@@ -16,6 +16,6 @@ namespace XServicoOnline.ViewModels
         public Usuario Usuario { get; set; }
         public ICollection<String> FuncoesId { get; set; }
         public SelectList Funcoes { get; set; }
-        public SelectList FuncoesSelecionadas { get; set; }
+        public IList<SelectPureOptions> FuncoesSelecionadas { get; set; }
     }
 }
