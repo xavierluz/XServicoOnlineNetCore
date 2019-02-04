@@ -20,10 +20,10 @@
         //});
     };
     var editarClickHandler = function (usuario) {
-        window.location = './EditarUsuario?usuarioId=' + usuario.id;
+        window.location = './EditarUsuario?usuarioId=' + encodeURIComponent(usuario.id);
     };
     var detalheClickHandler = function (usuario) {
-        window.location = './GerenciarUsuario?usuarioId=' + usuario.id;
+        window.location = './GerenciarUsuario?usuarioId=' + encodeURIComponent(usuario.id);
     };
     var criarTableUsuario = function () {
 
@@ -56,7 +56,7 @@
             "columns": [
                 { "data": "userName" },
                 { "data": "nome" },
-                { "data": "email" },
+                { "data": "userName" },
                 { "data": "id" },
                 { "defaultContent": '<div class="form-group default-content-data-table" style="margin-left: -1%;"><a class="action-editar" title="Editar"><i class="material-icons editarclass" data-toggle="tooltip" data-placement="top" title="Tooltip on top">edit</i><span class="sr-only aria-hidden="true"">Editar</span></a><a class="action-detalhe" title="Detalhes"><i class="material-icons detalheclass">details</i><span class="sr-only" aria-hidden="true">Detalhes</span></a></div>' }
             ],

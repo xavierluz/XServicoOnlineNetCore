@@ -19,11 +19,11 @@ namespace Services.seguranca.hash
             return new SHA1Criptografia(conteudoParaCriptografar);
         }
 
-        internal override async Task<string> GetHashData()
+        internal override async Task<string> Get()
         {
             return await getCriptografia();
         }
-        internal async override Task CreateHashData()
+        internal async override Task Create()
         {
             SHA1 sha1 = SHA1.Create();
 
@@ -63,15 +63,11 @@ namespace Services.seguranca.hash
         internal override async Task CreateToken()
         {
             this._conteudoParaCriptografar = string.Format("{0}{1}{2}{3}", DateTime.Now, DateTime.Now.Millisecond, new Random().Next().ToString(), Guid.NewGuid().ToString());
-            await this.CreateHashData();
+            await this.Create();
         }
 
-        internal override async Task<string> GetToken()
-        {
-            await CreateToken();
-            return await getCriptografia();
-        }
-        internal override void AdicionarConteudoParaCriptografar(string conteudoParaCriptografar)
+       
+        internal override void AdicionarConteudo(string conteudoParaCriptografar)
         {
             this._conteudoParaCriptografar = conteudoParaCriptografar;
         }

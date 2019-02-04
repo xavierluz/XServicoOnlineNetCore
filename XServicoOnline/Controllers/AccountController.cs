@@ -15,17 +15,14 @@ using XServicoOnline.Models;
 using XServicoOnline.ViewModels;
 using XServicoOnline.WebClasses;
 using Microsoft.EntityFrameworkCore;
-using ServicesInterfaces.seguranca;
-using Services.seguranca;
-using Services.seguranca.hash;
-using Services.cadastro;
-using ServicesInterfaces.cadastro;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using XServicoOnline.Controllers.bases;
+using XServicoOnline.extensao;
+using System.Web;
 
 namespace XServicoOnline.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private IJsonRetorno jsonRetorno = null;
         private readonly CultureInfo cultureInfo = new CultureInfo("pt-br");
@@ -117,6 +114,7 @@ namespace XServicoOnline.Controllers
 
             Usuario usuario = new Usuario();
             List<Usuario> usuarios = await usuario.GetUsuariosParaMontarGrid(this.isolationLevel, startRec, search, pageSize);
+            await usuarios.CriptografarUsuariosGrid(User.Identity.Name);
             List<UsuarioTableViewModel> usuarioTableViewModels = usuarios.ConvertAll(new Converter<Usuario, UsuarioTableViewModel>(UsuarioTableViewModel.GetInstance));
 
             var retorno = usuarioTableViewModels.Ordenar(order, orderDir);
@@ -177,25 +175,30 @@ namespace XServicoOnline.Controllers
         [HttpGet]
         public async Task<IActionResult> EditarUsuario(string usuarioId)
         {
-            Usuario usuario = await _userManager.FindByIdAsync(usuarioId);
-            IEmpresa empresa  = await usuario.GetEmpresa(User.Identity.Name);
-            CriptografiaFactory criptografiaFactory = CriptografiaFactory.Create(CadastroFactory.GetInstance().CreateAesCriptografia(empresa));
+            await base.CreateEmpresaDoUsuarioLogado(User.Identity.Name);
+            await base.CreateDesCriptografia();
+            await base.CriptografiaAdicionarConteudo(usuarioId);
+            await base.SetCriptografia();
+            var _usuarioId = await base.GetCriptografiaOuDescriptografia();
 
-            criptografiaFactory.AdicionarConteudoParaCriptografar(usuario.Id);
-            await criptografiaFactory.CreateHashData();
-            usuario.Id = await criptografiaFactory.GetHashData();
+            Usuario usuario = await _userManager.FindByIdAsync(_usuarioId);
+            await base.CreateCriptografia();
 
-            criptografiaFactory.AdicionarConteudoParaCriptografar(usuario.UserName);
-            await criptografiaFactory.CreateHashData();
-            usuario.Email = await criptografiaFactory.GetHashData();
+            await base.CriptografiaAdicionarConteudo(usuario.Id);
+            await base.SetCriptografia();
+            usuario.Id = await base.GetCriptografiaOuDescriptografia();
 
-            criptografiaFactory.AdicionarConteudoParaCriptografar(usuario.UserName);
-            await criptografiaFactory.CreateHashData();
-            usuario.UserName = await criptografiaFactory.GetHashData();
+            await base.CriptografiaAdicionarConteudo(usuario.UserName);
+            await base.SetCriptografia();
+            usuario.Email = await base.GetCriptografiaOuDescriptografia();
 
-            criptografiaFactory.AdicionarConteudoParaCriptografar(usuario.EmpresaId.ToString());
-            await criptografiaFactory.CreateHashData();
-            usuario.EmpresaIdCriptografada = await criptografiaFactory.GetHashData();
+            await base.CriptografiaAdicionarConteudo(usuario.UserName);
+            await base.SetCriptografia();
+            usuario.UserName = await base.GetCriptografiaOuDescriptografia();
+
+            await base.CriptografiaAdicionarConteudo(usuario.EmpresaId.ToString());
+            await base.SetCriptografia();
+            usuario.EmpresaIdCriptografada = await base.GetCriptografiaOuDescriptografia();
 
             return View(usuario);
         }
@@ -237,13 +240,44 @@ namespace XServicoOnline.Controllers
         [HttpGet]
         public async Task<IActionResult> GerenciarUsuario(string usuarioId)
         {
-            Usuario usuario = await _userManager.FindByIdAsync(usuarioId);
-            UsuarioFuncaoViewModel usuarioFuncaoViewModel = new UsuarioFuncaoViewModel();
-            usuarioFuncaoViewModel.Usuario = usuario;
+            await base.CreateEmpresaDoUsuarioLogado(User.Identity.Name);
+            await base.CreateDesCriptografia();
+            await base.CriptografiaAdicionarConteudo(HttpUtility.HtmlDecode(usuarioId));
+            await base.SetCriptografia();
+            var _usuarioId = await base.GetCriptografiaOuDescriptografia();
+
+            Usuario usuario = await _userManager.FindByIdAsync(_usuarioId);
+
+            await base.CreateCriptografia();
+            await base.CriptografiaAdicionarConteudo(usuario.Id);
+            await base.SetCriptografia();
+            usuario.Id = await base.GetCriptografiaOuDescriptografia();
+
+            await base.CriptografiaAdicionarConteudo(usuario.UserName);
+            await base.SetCriptografia();
+            usuario.Email = await base.GetCriptografiaOuDescriptografia();
+
+            await base.CriptografiaAdicionarConteudo(usuario.UserName);
+            await base.SetCriptografia();
+            usuario.UserName = await base.GetCriptografiaOuDescriptografia();
+
+            await base.CriptografiaAdicionarConteudo(usuario.EmpresaId.ToString());
+            await base.SetCriptografia();
+            usuario.EmpresaIdCriptografada = await base.GetCriptografiaOuDescriptografia();
+
+            UsuarioFuncaoViewModel usuarioFuncaoViewModel = new UsuarioFuncaoViewModel
+            {
+                Usuario = usuario
+            };
+
+            return View(usuarioFuncaoViewModel);
+        }
+        [HttpGet]
+        public async Task<JsonResult> GetFuncoesPuroSelect()
+        {
             List<Funcao> funcoes = await this._roleManager.Roles.ToListAsync();
-            SelectList selectListItems = new SelectList(funcoes, "Name", "Name");
             List<SelectPureOptions> selectsPuresOptions = new List<SelectPureOptions>();
-            foreach(var funcao in  funcoes)
+            foreach (var funcao in funcoes)
             {
                 SelectPureOptions selectPureOptions = new SelectPureOptions();
                 selectPureOptions.Label = funcao.Name;
@@ -251,23 +285,26 @@ namespace XServicoOnline.Controllers
                 selectsPuresOptions.Add(selectPureOptions);
                 selectPureOptions = null;
             }
-            var json = Json(selectsPuresOptions);
-            ViewBag.funcoesSelectPure = json;
-            usuarioFuncaoViewModel.Funcoes = selectListItems;
-            usuarioFuncaoViewModel.FuncoesSelecionadas = selectsPuresOptions;
-            return View(usuarioFuncaoViewModel);
+            var _json = Json(selectsPuresOptions);
+
+            return _json;
         }
-        [HttpGet]
-        public async Task<JsonResult> GetFuncoesPuroSelect()
+        public async Task<JsonResult> GetFuncoesPuroSelectDoUsuario(string id)
         {
-            List<Funcao> funcoes = await this._roleManager.Roles.ToListAsync();
-            SelectList selectListItems = new SelectList(funcoes, "Name", "Name");
+            await base.CreateEmpresaDoUsuarioLogado(User.Identity.Name);
+            await base.CreateDesCriptografia();
+            await base.CriptografiaAdicionarConteudo(id);
+            await base.SetCriptografia();
+            var _id = await base.GetCriptografiaOuDescriptografia();
+            Usuario usuarioGerenciar = await this._userManager.FindByIdAsync(_id);
+
+            IList<String> funcoes = await this._userManager.GetRolesAsync(usuarioGerenciar);
             List<SelectPureOptions> selectsPuresOptions = new List<SelectPureOptions>();
             foreach (var funcao in funcoes)
             {
                 SelectPureOptions selectPureOptions = new SelectPureOptions();
-                selectPureOptions.Label = funcao.Name;
-                selectPureOptions.Value = funcao.Name;
+                selectPureOptions.Label = funcao;
+                selectPureOptions.Value = funcao;
                 selectsPuresOptions.Add(selectPureOptions);
                 selectPureOptions = null;
             }
@@ -285,10 +322,21 @@ namespace XServicoOnline.Controllers
                 {
                     if (usuarioFuncaoViewModel.Usuario != null)
                     {
-                        var usuario = await this._userManager.FindByIdAsync(usuarioFuncaoViewModel.Usuario.Id);
-                        foreach (var funcao in usuarioFuncaoViewModel.FuncoesId) 
-                            await this._userManager.AddToRoleAsync(usuario, funcao);
-                        
+                        await base.CreateEmpresaDoUsuarioLogado(User.Identity.Name);
+                        await base.CreateDesCriptografia();
+                        await base.CriptografiaAdicionarConteudo(usuarioFuncaoViewModel.Usuario.Id);
+                        await base.SetCriptografia();
+                        var _id = await base.GetCriptografiaOuDescriptografia();
+
+                        var usuario = await this._userManager.FindByIdAsync(_id);
+                        string[] funcoes = usuarioFuncaoViewModel.FuncoesId.Split(',');
+                        var funcoesCadastradas = await this._userManager.GetRolesAsync(usuario);
+                        var resultado = await this._userManager.RemoveFromRolesAsync(usuario, funcoesCadastradas);
+                        if (resultado.Succeeded)
+                        {
+                            foreach (var funcao in funcoes)
+                                await this._userManager.AddToRoleAsync(usuario, funcao);
+                        }
                         this.jsonRetorno = jsonMensagemRetorno.Add("Alteração realizado com sucesso");
                     }
                 }

@@ -23,7 +23,11 @@ namespace Services.cadastro
         }
         public CriptografiaStrategy CreateAesCriptografia(IEmpresa empresa)
         {
-            return AesCriptografia.CreateKeyEmpresa(empresa);
+            return AesCriptografia.CreateCriptografiaEmpresa(empresa);
+        }
+        public CriptografiaStrategy CreateAesDesCriptografia(IEmpresa empresa)
+        {
+            return AesCriptografia.CreateDesCriptografiaEmpresa(empresa);
         }
     }
 }

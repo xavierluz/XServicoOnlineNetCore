@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Services.bases;
 using Services.cadastro;
+using Services.seguranca;
 using ServicesInterfaces.cadastro;
 using ServicesInterfaces.seguranca;
 using System;
@@ -19,8 +20,11 @@ using XServicoOnline.Validacao.Telefone;
 
 namespace XServicoOnline.Models
 {
-    public class Usuario: IdentityUser<string>
+    public class Usuario : IdentityUser<string>
     {
+        private IEmpresa empresaLogado = null;
+        private CriptografiaFactory criptografiaFactory = null;
+
         public Usuario()
         {
             this.dbConnection = PostgreSqlFactory.GetInstance().GetConnection();
@@ -66,14 +70,14 @@ namespace XServicoOnline.Models
         public override string Id { get => base.Id; set => base.Id = value; }
         [Required(ErrorMessage = "Empresa é obrigatório!")]
         public Guid EmpresaId { get; set; }
-        [Display(Name ="Usuário")]
-        [Required(ErrorMessage ="Usuário é obrigatório!")]
-        [StringLength(50,ErrorMessage ="Digite no mínimo 5 caracters!", MinimumLength =5)]
+        [Display(Name = "Usuário")]
+        [Required(ErrorMessage = "Usuário é obrigatório!")]
+        [StringLength(50, ErrorMessage = "Digite no mínimo 5 caracters!", MinimumLength = 5)]
         public override string UserName { get => base.UserName; set => base.UserName = value; }
         public override string NormalizedUserName { get => base.NormalizedUserName; set => base.NormalizedUserName = value; }
         [StringLength(50, ErrorMessage = "Digite no mínimo 5 caracters!", MinimumLength = 5)]
         [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessage ="Email é obrigatório!")]
+        [Required(ErrorMessage = "Email é obrigatório!")]
         [Display(Name = "Email")]
         public override string Email { get => base.Email; set => base.Email = value; }
         public override string NormalizedEmail { get => base.NormalizedEmail; set => base.NormalizedEmail = value; }
@@ -97,8 +101,8 @@ namespace XServicoOnline.Models
         [DataType(DataType.DateTime)]
         [Display(Name = "Data cadastro")]
         public DateTime RegisterDate { get; set; }
-        [Required(ErrorMessage ="Nome do usuário é obrigatório")]
-        [StringLength(50,ErrorMessage ="Digite entre 5 a 50 caracters",MinimumLength = 5)]
+        [Required(ErrorMessage = "Nome do usuário é obrigatório")]
+        [StringLength(50, ErrorMessage = "Digite entre 5 a 50 caracters", MinimumLength = 5)]
         public String Nome { get; set; }
         public virtual ICollection<UsuarioReivindicacao> UsuarioReivindicacao { get; set; }
         public virtual ICollection<UsuarioLogin> UsuarioLogin { get; set; }
@@ -160,6 +164,39 @@ namespace XServicoOnline.Models
         {
             EmpresaAbstract empresaAbstract = CadastroFactory.GetInstance().CreateEmpresa(System.Data.IsolationLevel.ReadUncommitted);
             return await empresaAbstract.GetEmpresa(userName);
+        }
+
+        public async Task CriptografarUsuario(string nomeUsuarioLogado)
+        {
+            this.empresaLogado = await this.GetEmpresa(nomeUsuarioLogado);
+            this.criptografiaFactory = CriptografiaFactory.Create(CadastroFactory.GetInstance().CreateAesCriptografia(this.empresaLogado));
+            this.criptografiaFactory.AdicionarConteudo(this.Id);
+            await this.criptografiaFactory.Create();
+            this.Id = await this.criptografiaFactory.Get();
+            this.criptografiaFactory.AdicionarConteudo(this.UserName);
+            await this.criptografiaFactory.Create();
+            this.UserName = await this.criptografiaFactory.Get();
+            this.criptografiaFactory.AdicionarConteudo(this.UserName);
+            await this.criptografiaFactory.Create();
+            this.Email = await this.criptografiaFactory.Get();
+            this.criptografiaFactory.AdicionarConteudo(this.EmpresaId.ToString());
+            await this.criptografiaFactory.Create();
+            this.EmpresaIdCriptografada = await this.criptografiaFactory.Get();
+            criptografiaFactory = null;
+            this.empresaLogado = null;
+        }
+        public async Task CriptografarUsuarioGrid(string nomeUsuarioLogado)
+        {
+            this.empresaLogado = await this.GetEmpresa(nomeUsuarioLogado);
+            this.criptografiaFactory = CriptografiaFactory.Create(CadastroFactory.GetInstance().CreateAesCriptografia(this.empresaLogado));
+            this.criptografiaFactory.AdicionarConteudo(this.Id);
+            await this.criptografiaFactory.Create();
+            this.Id = await this.criptografiaFactory.Get();
+            this.criptografiaFactory.AdicionarConteudo(this.EmpresaId.ToString());
+            await this.criptografiaFactory.Create();
+            this.EmpresaIdCriptografada = await this.criptografiaFactory.Get();
+            criptografiaFactory = null;
+            this.empresaLogado = null;
         }
         #endregion
     }

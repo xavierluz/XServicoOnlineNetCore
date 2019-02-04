@@ -10,58 +10,83 @@ namespace Services.seguranca.hash
 {
     internal class AesCriptografia : CriptografiaStrategy
     {
-        private string _conteudoParaCriptografar = string.Empty;
-        private byte[] _conteudoCriptografado = null;
+        private string _conteudo = string.Empty;
+        private byte[] _conteudoRetorno = null;
         private byte[] Key = null;
         private byte[] Iv = null;
         private IEmpresa empresa;
         private IUsuario usuario;
+        private bool descriptografia = false;
         private AesCriptografia(IEmpresa empresa)
         {
+            this.descriptografia = false;
             this.empresa = empresa;
         }
         private AesCriptografia(IUsuario usuario)
         {
+            this.descriptografia = false;
             this.usuario = usuario;
         }
-        internal static AesCriptografia CreateKeyEmpresa(IEmpresa empresa)
+        private AesCriptografia(IEmpresa empresa, bool descriptografia)
+        {
+            this.descriptografia = descriptografia;
+            this.empresa = empresa;
+        }
+        private AesCriptografia(IUsuario usuario, bool descriptografia)
+        {
+            this.descriptografia = descriptografia;
+            this.usuario = usuario;
+        }
+        internal static AesCriptografia CreateCriptografiaEmpresa(IEmpresa empresa)
         {
             return new AesCriptografia(empresa);
         }
-        internal static AesCriptografia CreateKeyUsuario(IUsuario usuario)
+        internal static AesCriptografia CreateCriptografiaUsuario(IUsuario usuario)
         {
             return new AesCriptografia(usuario);
         }
-        internal override async Task<string> GetHashData()
+        internal static AesCriptografia CreateDesCriptografiaEmpresa(IEmpresa empresa)
         {
+            return new AesCriptografia(empresa,true);
+        }
+        internal static AesCriptografia CreateDesCriptografiaUsuario(IUsuario usuario)
+        {
+            return new AesCriptografia(usuario, true);
+        }
+        internal override async Task<string> Get()
+        {
+            if (this._conteudoRetorno ==null || this._conteudoRetorno.Length < 1)
+                return await Task.Run(() => _conteudo);
+
             return await getCriptografia();
         }
         
 
-        internal override async Task CreateHashData()
+        internal override async Task Create()
         {
             using (Aes aes = Aes.Create())
             {
                 SetKeyIv();
-                
-                byte[] ecriptado = EncryptStringEmBytesAes(this._conteudoParaCriptografar, this.Key, this.Iv);
-                this._conteudoCriptografado = await Task.Run(()=> ecriptado);
-
-                string roundtrip = DecryptStringParaBytesAes(this._conteudoCriptografado, this.Key, this.Iv);
+                if (this.descriptografia)
+                {
+                    var bytes = await getBytesBase64(this._conteudo);
+                    this._conteudo = DecryptStringParaBytesAes(bytes, this.Key, this.Iv);
+                }
+                else
+                {
+                    byte[] ecriptado = EncryptStringEmBytesAes(this._conteudo, this.Key, this.Iv);
+                    this._conteudoRetorno = await Task.Run(() => ecriptado);
+                }
             }
         }
 
         internal override async Task CreateToken()
         {
-            this._conteudoParaCriptografar = string.Format("{0}{1}{2}{3}", DateTime.Now, DateTime.Now.Millisecond, new Random().Next().ToString(), Guid.NewGuid().ToString());
-            await this.CreateHashData();
+            this._conteudo = string.Format("{0}{1}{2}{3}", DateTime.Now, DateTime.Now.Millisecond, new Random().Next().ToString(), Guid.NewGuid().ToString());
+            await this.Create();
         }
 
-        internal override async Task<string> GetToken()
-        {
-            await CreateToken();
-            return await getCriptografia();
-        }
+       
 
         internal override async Task<bool> ValidarHashData(string hash1, string hash2)
         {
@@ -78,12 +103,20 @@ namespace Services.seguranca.hash
         {
             var criptoGrafias = Task.Run(() =>
             {
-                return Convert.ToBase64String(this._conteudoCriptografado);
+                return Convert.ToBase64String(this._conteudoRetorno);
             });
 
             return await criptoGrafias;
         }
+        private async Task<byte[]> getBytesBase64(string conteudoBase64)
+        {
+            var bytesBase = Task.Run(() =>
+            {
+                return Convert.FromBase64String(conteudoBase64);
+            });
 
+            return await bytesBase;
+        }
         private byte[] EncryptStringEmBytesAes(string conteudoACriptografar, byte[] Key, byte[] IV)
         {
             // Checar argumentos.
@@ -184,9 +217,9 @@ namespace Services.seguranca.hash
             }
         }
 
-        internal override void AdicionarConteudoParaCriptografar(string conteudoParaCriptografar)
+        internal override void AdicionarConteudo(string conteudo)
         {
-            this._conteudoParaCriptografar = conteudoParaCriptografar;
+            this._conteudo = conteudo;
         }
     }
 }

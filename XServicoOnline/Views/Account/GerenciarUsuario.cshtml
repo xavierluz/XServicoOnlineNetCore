@@ -21,8 +21,9 @@
                             </div>
                             <div class="card-body">
                                 <form asp-action="GerenciarUsuario" method="post" id="formGerenciar" role="form">
-                                    <input type="hidden" asp-for="Usuario.Id" />
+                                    <input type="hidden" id="usuarioId" asp-for="Usuario.Id" />
                                     <input type="hidden" asp-for="Usuario.UserName" />
+                                    <input type="hidden" id="funcoesIdSelecionadas" asp-for="FuncoesId" />
                                     <div class="row">
                                         <div class="col-md-1">
                                             <i class="material-icons icon-usuario-margin-top">person</i>
@@ -35,24 +36,19 @@
                                         </div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="bmd-label-floating">Selecione a(s)Função(ões)</label>
-                                                <select asp-for="FuncoesId" asp-items="Model.Funcoes" class="multiselect-ui"></select>
-                                            </div>
-                                        </div>
+                                   
 
-                                    </div>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-12" data-toggle="tooltip" data-placement="top" title="Clique para adiconar uma nova função para ">
                                             <div class="form-group">
-                                                <label class="bmd-label-floating">Selecione a(s)Função(ões)</label>
+                                                <label class="bmd-label-floating">Função(ões)</label>
                                                 <span class="funcoes"></span>
                                             </div>
                                         </div>
 
                                     </div>
+                                    
+                                                                               
                                     <partial name="_BotaoSalvarRetornar" />
                                 </form>
                             </div>
@@ -82,80 +78,81 @@
                 submitAjax('#formGerenciar', 'GerenciarUsuario');
             });
             //console.log(JSON.stringify(@ViewBag.funcoesSelectPure));
-            getFuncoes();
+            //getFuncoes();
+            getFuncoesSelecionadas($('#usuarioId').val());
 
         });
         var getFuncoes = function () {
+
+
             $.get('GetFuncoesPuroSelect', {}, function (data) {
 
-                let builder = [];
-                builder.push('[');
+                var templateBuilder = [];
+                templateBuilder.push('[');
                 $.each(data, function (index, funcao) {
-                    builder.push('{');
-                    builder.push('label:' + '"' + funcao.label + '",');
-                    builder.push('value:' + '"' + funcao.value + '"');
-                    builder.push('},');
+                    templateBuilder.push('{');
+                    templateBuilder.push('"label":"' + funcao.label + '",');
+                    templateBuilder.push('"value":"' + funcao.value + '"');
+                    templateBuilder.push('},');
+                   
                 });
-                builder.push(']');
-                console.log(builder.join(""));
-                var options = [
-                    {
-                        label: "AdministradorEmpresa", value: "AdministradorEmpresa"
-                    },
-                    {
-                        label: "Requisitante", value: "Requisitante"
-                    },
-                    {
-                        label: "Teste", value: "Teste"
-                    },
-                    {
-                        label: "Administrador", value: "Administrador"
-                    }
-                ]
-
+                templateBuilder.push(']');
+                jsonIntervalosNumeros = JSON.parse(templateBuilder.join("").replace('},]', '}]'));
+                return jsonIntervalosNumeros;
+               
             });
         }
-       
-        var autocomplete = new SelectPure(".funcoes", {
-            options: [
-                {
-                    label: "Barbina",
-                    value: "ba",
+
+        var getFuncoesSelecionadas = function (id) {
+            let jsonFuncoes = '';
+            let jsonFuncoesSelecionadas = [];
+
+            $.get('GetFuncoesPuroSelectDoUsuario', { id: id }, function (data) {
+
+                var templateBuilder = [];
+                $.each(data, function (index, funcao) {
+
+                    templateBuilder.push(funcao.value);
+                });
+                jsonFuncoesSelecionadas = templateBuilder;
+                templateBuilder = [];
+
+                $.get('GetFuncoesPuroSelect', {}, function (data) {
+
+                    var templateBuilder = [];
+                    templateBuilder.push('[');
+                    $.each(data, function (index, funcao) {
+                        templateBuilder.push('{');
+                        templateBuilder.push('"label":"' + funcao.label + '",');
+                        templateBuilder.push('"value":"' + funcao.value + '"');
+                        templateBuilder.push('},');
+
+                    });
+                    templateBuilder.push(']');
+                    jsonFuncoes = JSON.parse(templateBuilder.join("").replace('},]', '}]'));
+                    templateBuilder = [];
+
+                    if (setFuncoes(jsonFuncoes, jsonFuncoesSelecionadas))
+                        $('.funcao-remover').text('delete');
+                });
+            });
+        }
+        var setFuncoes = function (options,values) {
+            let autocomplete = new SelectPure(".funcoes", {
+                options: options,
+                value: values,//['Teste','Requisitante'],
+                multiple: true,
+                icon: "material-icons funcao-remover",
+               onChange: value => {
+                    console.log(value);
+                    $('.funcao-remover').text('delete');
+                    $('#funcoesIdSelecionadas').append('');
+
+                    $('#funcoesIdSelecionadas').val(value);
                 },
-                {
-                    label: "Bigoli",
-                    value: "bg",
-                },
-                {
-                    label: "Bucatini",
-                    value: "bu",
-                },
-                {
-                    label: "Busiate",
-                    value: "bus",
-                },
-                {
-                    label: "Capellini",
-                    value: "cp",
-                },
-                {
-                    label: "Fedelini",
-                    value: "fe",
-                },
-                {
-                    label: "Maccheroni",
-                    value: "ma",
-                },
-                {
-                    label: "Spaghetti",
-                    value: "sp",
-                },
-            ],
-            value: ["sp"],
-            multiple: true,
-            autocomplete: true,
-            icon: "fa fa-times",
-            onChange: value => { console.log(value); },
-        });
+            
+            });
+            return true;
+        }
     </script>
 }
