@@ -51,6 +51,7 @@
 
   <ItemGroup>
     <Folder Include="comum\" />
+    <Folder Include="movimento\saida\" />
     <Folder Include="produto\NovaPasta\" />
   </ItemGroup>
 

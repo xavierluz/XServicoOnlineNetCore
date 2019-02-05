@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServicesInterfaces.movimento;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -23,5 +24,7 @@ namespace ServicesInterfaces.cadastro
         int AccessFailedCount { get; set; }
         DateTime RegisterDate { get; set; }
         String Nome { get; set; }
+        Guid EmpresaId { get; set; }
+        ICollection<IMovimento> IMovimentos { get; set; } 
     }
 }

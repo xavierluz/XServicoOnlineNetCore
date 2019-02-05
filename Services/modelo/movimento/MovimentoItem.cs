@@ -33,5 +33,54 @@ namespace Services.modelo.movimento
         public IMovimento IMovimento { get; set; }
         [NotMapped]
         public IMaterial IMaterial { get; set; }
+
+        #region "Métodos publicos"
+        public static MovimentoItem GetMovimentoItem(IMovimentoItem movimentoItem)
+        {
+            if (movimentoItem != null)
+            {
+                return new MovimentoItem
+                {
+                    DataFabricacaoDoLote = movimentoItem.DataFabricacaoDoLote,
+                    DataVencimentoDoLote = movimentoItem.DataVencimentoDoLote,
+                    Id = movimentoItem.Id,
+                    Material = Material.GetInstance().GetMaterial(movimentoItem.IMaterial),
+                    Lote = movimentoItem.Lote,
+                    MaterialId = movimentoItem.MaterialId,
+                    MovimentoId = movimentoItem.MovimentoId,
+                    PrecoUnitarioDoMaterial = movimentoItem.PrecoUnitarioDoMaterial,
+                    QuantidadeMovimentadaDoMaterial = movimentoItem.QuantidadeMovimentadaDoMaterial,
+                    QuantidadeSaldoDoMaterial = movimentoItem.QuantidadeSaldoDoMaterial,
+                    ValorDesdobroDoMaterial = movimentoItem.ValorDesdobroDoMaterial,
+                    ValorMovimentadoDoMaterial = movimentoItem.ValorMovimentadoDoMaterial,
+                    ValorSaldoDoMaterial = movimentoItem.ValorSaldoDoMaterial,
+                };
+            }
+            else
+            {
+                return new MovimentoItem();
+            }
+        }
+        public IMovimentoItem GetMovimentoItem()
+        {
+            IMovimentoItem movimentoItem = new MovimentoItem
+            {
+                DataFabricacaoDoLote = this.DataFabricacaoDoLote,
+                DataVencimentoDoLote = this.DataVencimentoDoLote,
+                Id = this.Id,
+                IMaterial = this.Material,
+                Lote = this.Lote,
+                MaterialId = this.MaterialId,
+                MovimentoId = this.MovimentoId,
+                PrecoUnitarioDoMaterial = this.PrecoUnitarioDoMaterial,
+                QuantidadeMovimentadaDoMaterial = this.QuantidadeMovimentadaDoMaterial,
+                QuantidadeSaldoDoMaterial = this.QuantidadeSaldoDoMaterial,
+                ValorDesdobroDoMaterial = this.ValorDesdobroDoMaterial,
+                ValorMovimentadoDoMaterial = this.ValorMovimentadoDoMaterial,
+                ValorSaldoDoMaterial = this.ValorSaldoDoMaterial,
+            };
+            return movimentoItem;
+        }
+        #endregion
     }
 }

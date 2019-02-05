@@ -25,5 +25,18 @@ namespace Services.modelo.movimento
         [NotMapped]
         public ICollection<IMovimento> IMovimentos { get; set; }
         #endregion
+
+        #region "Métodos publicos"
+        public static TipoMovimento GetTipoMovimento(ITipoMovimento tipoMovimento)
+        {
+            return new TipoMovimento
+            {
+                Ativo = tipoMovimento.Ativo,
+                Descricao = tipoMovimento.Descricao,
+                Id = tipoMovimento.Id,
+                Tipo = tipoMovimento.Tipo 
+            };
+        }
+        #endregion
     }
 }

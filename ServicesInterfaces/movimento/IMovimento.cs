@@ -14,7 +14,7 @@ namespace ServicesInterfaces.movimento
         Int64 NumeroDocumento { get; set; }
         DateTime DataDocumento { get; set; }
         DateTime DataMovimento { get; set; }
-        DateTime DataEstornoDoMovimento { get; set; }
+        DateTime? DataEstornoDoMovimento { get; set; }
         String Observacao { get; set; }
         bool Ativo { get; set; }
         IAlmoxarifado IAlmoxarifado { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServicesInterfaces.movimento;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,5 +12,6 @@ namespace ServicesInterfaces.cadastro
         IEmpresa IEmpresa { get; set; }
         String Descricao { get; set; }
         String Indentificacao { get; set; }
+        ICollection<IMovimento> IMovimentos { get; set; }
     }
 }
